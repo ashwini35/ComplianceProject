@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AgileData xmlns="http://www.oracle.com/webfolder/technetwork/xml/plm/2011/09/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.oracle.com/webfolder/technetwork/xml/plm/2011/09/ http://www.oracle.com/webfolder/technetwork/xml/plm/2011/09/aXML.xsd" creator="Krishnan, Subash (skrishnan)">
+  <HomogeneousMaterialDeclarations uniqueId="2000002395:1009626841">
+    <CoverPage>
+      <Name>MD6211411111111</Name>
+      <DeclarationType>Homogeneous Material Declaration</DeclarationType>
+      <Description>PART ENVIRONMENTAL COMPLIANCE REQUEST</Description>
+      <Supplier>NISSHA PRINTING CO LTD (SUP000002678)</Supplier>
+      <DueDate>2017-09-30T05:00:00Z</DueDate>
+      <Originator>Seri, Ozlem (cgv683)</Originator>
+      <ComplianceManager>Mohd Kasim, Sarizanatrah (vrtw73)</ComplianceManager>
+      <Workflow>Declaration</Workflow>
+      <Status>Released</Status>
+      <DateReleased>2017-09-26T04:36:16Z</DateReleased>
+      <NeedRollup>No</NeedRollup>
+      <SupplierContactName>Sawa, Tom (t-sawa@nissha.com)</SupplierContactName>
+      <HasInvalidSubstance>No</HasInvalidSubstance>
+    </CoverPage>
+    <ManufacturerPartComposition>
+      <Specification>#W18 Section 2 Rev U</Specification>
+      <MfrName>NISSHA PRINTING CO LTD</MfrName>
+      <Mfr.PartNumber>ZBR-K20_ACM</Mfr.PartNumber>
+      <SubstanceNode>
+        <SubstanceName>ZBR-K20_ACM-209</SubstanceName>
+        <Mass UOM="Gram">12.5</Mass>
+        <CalculatedCompliance>Exempt</CalculatedCompliance>
+        <SubstanceType>Subparts</SubstanceType>
+        <ChildLevel>0</ChildLevel>
+        <ResultMass UOM="Gram">12.5</ResultMass>
+        <SubstanceNode>
+          <SubstanceName>Passivation film-148</SubstanceName>
+          <Mass UOM="Gram">0.292</Mass>
+          <CalculatedCompliance>Compliant</CalculatedCompliance>
+          <SubstanceType>Materials</SubstanceType>
+          <ChildLevel>1</ChildLevel>
+          <ResultMass UOM="Gram">0.292</ResultMass>
+          <SubstanceNode>
+            <SubstanceName>ANTIMONY AND ANTIMONY COMPOUNDS</SubstanceName>
+            <CalculatedPpm>300</CalculatedPpm>
+            <ThresholdMassPpm>0</ThresholdMassPpm>
+            <Reporting>Optional</Reporting>
+            <SubstanceType>Substance Groups</SubstanceType>
+            <LifecyclePhase>Active</LifecyclePhase>
+            <SpecIntentionallyAdded>No</SpecIntentionallyAdded>
+            <CalculatedMass UOM="Gram">0.0000876</CalculatedMass>
+            <ChildLevel>2</ChildLevel>
+            <ResultMass UOM="Gram">0.0000876</ResultMass>
+            <ResultPpm>300</ResultPpm>
+            <SubstanceNode>
+              <SubstanceName>Antimony trioxide</SubstanceName>
+              <CasNumber>1309-64-4</CasNumber>
+              <DeclaredPpm>300</DeclaredPpm>
+              <ConversionFactor>1</ConversionFactor>
+              <SubstanceType>substances</SubstanceType>
+              <LifecyclePhase>Active</LifecyclePhase>
+              <ChildLevel>3</ChildLevel>
+              <UserEnteredCasNumber>1309-64-4</UserEnteredCasNumber>
+            </SubstanceNode>
+            <SubstanceNode>
+              <SubstanceName>SubstGrpTestChangeNameTest</SubstanceName>
+              <CasNumber>SubstGrpTest2</CasNumber>
+              <DeclaredPpm>300</DeclaredPpm>
+              <ConversionFactor>1</ConversionFactor>
+              <SubstanceType>substances</SubstanceType>
+              <LifecyclePhase>Active</LifecyclePhase>
+              <ChildLevel>3</ChildLevel>
+              <UserEnteredCasNumber>SubstGrpTest2</UserEnteredCasNumber>
+            </SubstanceNode>
+            <SubstanceNode>
+              <SubstanceName>Polyethylene terephthalate (PET)</SubstanceName>
+              <CasNumber>25038-59-9</CasNumber>
+              <DeclaredPpm>666700</DeclaredPpm>
+              <SubstanceType>substances</SubstanceType>
+              <LifecyclePhase>Active</LifecyclePhase>
+              <CalculatedMass UOM="Gram">0.1946764</CalculatedMass>
+              <ChildLevel>3</ChildLevel>
+              <ResultMass UOM="Gram">0.1946764</ResultMass>
+              <ResultPpm>666700</ResultPpm>
+              <UserEnteredCasNumber>25038-59-9</UserEnteredCasNumber>
+            </SubstanceNode>
+          </SubstanceNode>
+          <SubstanceNode>
+            <SubstanceName>SubstGrpTest1</SubstanceName>
+            <CasNumber>SubstGrpTest1</CasNumber>
+            <DeclaredPpm>300</DeclaredPpm>
+            <ConversionFactor>1</ConversionFactor>
+            <SubstanceType>substances</SubstanceType>
+            <LifecyclePhase>Active</LifecyclePhase>
+            <ChildLevel>2</ChildLevel>
+            <UserEnteredCasNumber>SubstGrpTest1</UserEnteredCasNumber>
+          </SubstanceNode>
+          <SubstanceNode xmlns="">
+            <SubstanceName>CreateGrpTest2</SubstanceName>
+            <SubstanceType>Substance Groups</SubstanceType>
+            <LifecyclePhase>Active</LifecyclePhase>
+            <ChildLevel>2</ChildLevel>
+            <SubstanceNode xmlns="http://www.oracle.com/webfolder/technetwork/xml/plm/2011/09/">
+              <SubstanceName>SubstGrpTest3</SubstanceName>
+              <CasNumber>SubstGrpTest3</CasNumber>
+              <DeclaredPpm>300</DeclaredPpm>
+              <ConversionFactor>1</ConversionFactor>
+              <SubstanceType>substances</SubstanceType>
+              <LifecyclePhase>Active</LifecyclePhase>
+              <ChildLevel>3</ChildLevel>
+              <UserEnteredCasNumber>SubstGrpTest3</UserEnteredCasNumber>
+            </SubstanceNode>
+          </SubstanceNode>
+          <SubstanceNode xmlns="">
+            <SubstanceName>CreateGrpTest2</SubstanceName>
+            <SubstanceType>Substance Groups</SubstanceType>
+            <LifecyclePhase>Active</LifecyclePhase>
+            <ChildLevel>2</ChildLevel>
+            <SubstanceNode xmlns="http://www.oracle.com/webfolder/technetwork/xml/plm/2011/09/">
+              <SubstanceName>SubstGrpTest4</SubstanceName>
+              <CasNumber>SubstGrpTest4</CasNumber>
+              <DeclaredPpm>300</DeclaredPpm>
+              <ConversionFactor>1</ConversionFactor>
+              <SubstanceType>substances</SubstanceType>
+              <LifecyclePhase>Active</LifecyclePhase>
+              <ChildLevel>3</ChildLevel>
+              <UserEnteredCasNumber>SubstGrpTest4</UserEnteredCasNumber>
+            </SubstanceNode>
+          </SubstanceNode>
+          <SubstanceNode xmlns="">
+            <SubstanceName>CreateGrpTest2</SubstanceName>
+            <SubstanceType>Substance Groups</SubstanceType>
+            <LifecyclePhase>Active</LifecyclePhase>
+            <ChildLevel>2</ChildLevel>
+            <SubstanceNode xmlns="http://www.oracle.com/webfolder/technetwork/xml/plm/2011/09/">
+              <SubstanceName>SubstGrpTest5</SubstanceName>
+              <CasNumber>SubstGrpTest5</CasNumber>
+              <DeclaredPpm>300</DeclaredPpm>
+              <ConversionFactor>1</ConversionFactor>
+              <SubstanceType>substances</SubstanceType>
+              <LifecyclePhase>Active</LifecyclePhase>
+              <ChildLevel>3</ChildLevel>
+              <UserEnteredCasNumber>SubstGrpTest5</UserEnteredCasNumber>
+            </SubstanceNode>
+          </SubstanceNode>
+        </SubstanceNode>
+        <SubstanceNode>
+          <SubstanceName>Protect film-962</SubstanceName>
+          <Mass UOM="Gram">0.1</Mass>
+          <CalculatedCompliance>Compliant</CalculatedCompliance>
+          <SubstanceType>Materials</SubstanceType>
+          <ChildLevel>1</ChildLevel>
+          <ResultMass UOM="Gram">0.1</ResultMass>
+          <SubstanceNode>
+            <SubstanceName>ANTIMONY AND ANTIMONY COMPOUNDS</SubstanceName>
+            <CalculatedPpm>220</CalculatedPpm>
+            <ThresholdMassPpm>0</ThresholdMassPpm>
+            <Reporting>Optional</Reporting>
+            <SubstanceType>Substance Groups</SubstanceType>
+            <LifecyclePhase>Active</LifecyclePhase>
+            <SpecIntentionallyAdded>No</SpecIntentionallyAdded>
+            <CalculatedMass UOM="Gram">0.000022</CalculatedMass>
+            <ChildLevel>2</ChildLevel>
+            <ResultMass UOM="Gram">0.000022</ResultMass>
+            <ResultPpm>220</ResultPpm>
+            <SubstanceNode>
+              <SubstanceName>Antimony trioxide</SubstanceName>
+              <CasNumber>1309-64-4</CasNumber>
+              <DeclaredPpm>220</DeclaredPpm>
+              <ConversionFactor>1</ConversionFactor>
+              <SubstanceType>substances</SubstanceType>
+              <LifecyclePhase>Active</LifecyclePhase>
+              <ChildLevel>3</ChildLevel>
+              <UserEnteredCasNumber>1309-64-4</UserEnteredCasNumber>
+            </SubstanceNode>
+            <SubstanceNode>
+              <SubstanceName>Polyethylene terephthalate (PET)</SubstanceName>
+              <CasNumber>25038-59-9</CasNumber>
+              <DeclaredPpm>995000</DeclaredPpm>
+              <SubstanceType>substances</SubstanceType>
+              <LifecyclePhase>Active</LifecyclePhase>
+              <CalculatedMass UOM="Gram">0.0995</CalculatedMass>
+              <ChildLevel>3</ChildLevel>
+              <ResultMass UOM="Gram">0.0995</ResultMass>
+              <ResultPpm>995000</ResultPpm>
+              <UserEnteredCasNumber>25038-59-9</UserEnteredCasNumber>
+            </SubstanceNode>
+            <SubstanceNode>
+              <SubstanceName>Misc., not to declare</SubstanceName>
+              <CasNumber>MISC</CasNumber>
+              <DeclaredPpm>4780</DeclaredPpm>
+              <SubstanceType>substances</SubstanceType>
+              <LifecyclePhase>Active</LifecyclePhase>
+              <CalculatedMass UOM="Gram">0.000478</CalculatedMass>
+              <ChildLevel>3</ChildLevel>
+              <ResultMass UOM="Gram">0.000478</ResultMass>
+              <ResultPpm>4780</ResultPpm>
+              <UserEnteredCasNumber>MISC</UserEnteredCasNumber>
+            </SubstanceNode>
+            <SubstanceNode>
+              <SubstanceName>modifySubstanceTest1</SubstanceName>
+              <CasNumber>TestCasNo1</CasNumber>
+              <DeclaredPpm>995000</DeclaredPpm>
+              <SubstanceType>substances</SubstanceType>
+              <LifecyclePhase>Active</LifecyclePhase>
+              <CalculatedMass UOM="Gram">0.0995</CalculatedMass>
+              <ChildLevel>3</ChildLevel>
+              <ResultMass UOM="Gram">0.0995</ResultMass>
+              <ResultPpm>995000</ResultPpm>
+              <UserEnteredCasNumber>TestCasNo1</UserEnteredCasNumber>
+            </SubstanceNode>
+          </SubstanceNode>
+          <SubstanceNode>
+            <SubstanceName>modifySubstanceTest0</SubstanceName>
+            <CasNumber>TestCasNo0</CasNumber>
+            <DeclaredPpm>995000</DeclaredPpm>
+            <SubstanceType>substances</SubstanceType>
+            <LifecyclePhase>Active</LifecyclePhase>
+            <CalculatedMass UOM="Gram">0.0995</CalculatedMass>
+            <ChildLevel>2</ChildLevel>
+            <ResultMass UOM="Gram">0.0995</ResultMass>
+            <ResultPpm>995000</ResultPpm>
+            <UserEnteredCasNumber>TestCasNo0</UserEnteredCasNumber>
+          </SubstanceNode>
+          <SubstanceNode xmlns="">
+            <SubstanceName>CreateGrpTest</SubstanceName>
+            <SubstanceType>Substance Groups</SubstanceType>
+            <LifecyclePhase>Active</LifecyclePhase>
+            <ChildLevel>2</ChildLevel>
+            <SubstanceNode xmlns="http://www.oracle.com/webfolder/technetwork/xml/plm/2011/09/">
+              <SubstanceName>TestSubstance2</SubstanceName>
+              <CasNumber>TestCasNo2</CasNumber>
+              <DeclaredPpm>995000</DeclaredPpm>
+              <SubstanceType>substances</SubstanceType>
+              <LifecyclePhase>Active</LifecyclePhase>
+              <CalculatedMass UOM="Gram">0.0995</CalculatedMass>
+              <ChildLevel>3</ChildLevel>
+              <ResultMass UOM="Gram">0.0995</ResultMass>
+              <ResultPpm>995000</ResultPpm>
+              <UserEnteredCasNumber>TestCasNo2</UserEnteredCasNumber>
+            </SubstanceNode>
+          </SubstanceNode>
+        </SubstanceNode>
+      </SubstanceNode>
+    </ManufacturerPartComposition>
+    <ManufacturerParts>
+      <Mfr.PartNumber>ZBR-K20_ACM</Mfr.PartNumber>
+      <MfrName>NISSHA PRINTING CO LTD</MfrName>
+      <CalculatedCompliance>Exempt</CalculatedCompliance>
+      <Specification>#W18 Section 2 Rev U</Specification>
+      <Mass UOM="Gram">12.5</Mass>
+      <IsFmd>Fully Disclosed</IsFmd>
+      <Mfr.PartLifecyclePhase>Active</Mfr.PartLifecyclePhase>
+    </ManufacturerParts>
+    <PageThree>
+      <Date06>2017-09-25T16:00:00Z</Date06>
+      <Date01>2017-05-22T16:00:00Z</Date01>
+      <Text01>t-nogaki@nissha.com</Text01>
+      <Text02>t-nogaki@nissha.com</Text02>
+      <Date02>2017-08-01T16:00:00Z</Date02>
+      <Text03>t-nogaki@nissha.com</Text03>
+      <Text04>t-nogaki@nissha.com</Text04>
+    </PageThree>
+    <PageTwo>
+      <Date03>2017-03-10T16:54:53Z</Date03>
+      <Date04>2017-09-24T16:00:00Z</Date04>
+      <List03>Request/Reply</List03>
+      <List06>Full Disclosure</List06>
+      <List04>Accepted</List04>
+      <Text04>Zebra</Text04>
+      <Text01>SUP000002678</Text01>
+      <Text02>SUP000002678</Text02>
+      <Text21>Zebra</Text21>
+      <Text11>Thomas Nogaki</Text11>
+      <Text13>(8175) 823-5217</Text13>
+      <Text14>t-nogaki@nissha.com</Text14>
+      <Text20>Thomas Nogaki</Text20>
+      <Text06>(8175) 823-5217</Text06>
+      <Text07>t-nogaki@nissha.com</Text07>
+    </PageTwo>
+  </HomogeneousMaterialDeclarations>
+</AgileData>
