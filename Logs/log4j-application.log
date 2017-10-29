@@ -209,3 +209,20 @@
 2017-10-29 12:19:49 INFO  InitiateXMLReadWrite:513 - program InitiateXMLReadWrite completedIn milisecond --243
 2017-10-29 12:19:49 INFO  XMLParse_Main:123 - loading completed for file...exitting main method at- 2017-10-29 12-19-49
 2017-10-29 12:19:49 INFO  XMLParse_Main:135 - Disconnected from Agile session
+2017-10-29 13:35:28 INFO  XMLParse_Main:49 - all string constant/properties initilised successfully
+2017-10-29 13:35:28 INFO  XMLParse_Main:118 - ComplianceProject main method invoked followed with its constructor code execution at... 2017-10-29 13-35-28
+2017-10-29 13:35:28 INFO  InitiateXMLReadWrite:47 - program InitiateXMLReadWrite start date time--2017/10/29 13:35:28
+2017-10-29 13:35:28 INFO  InitiateXMLReadWrite:48 - program InitiateXMLReadWrite start milisecond --1509264328885
+2017-10-29 13:35:28 DEBUG InitiateXMLReadWrite:463 - ------------readWriteXML method start..................
+2017-10-29 13:35:28 INFO  InitiateXMLReadWrite:55 -  ~ INFO  :: ~ looping through input csv data file -Start... 
+2017-10-29 13:35:28 INFO  InitiateXMLReadWrite:90 - CSV Input Data read completed from file:: null TotalExecutionTime 0.02300
+2017-10-29 13:35:28 INFO  InitiateXMLReadWrite:95 - hmCasNum_SubstanceInfo size:: 806
+2017-10-29 13:35:28 INFO  InitiateXMLReadWrite:493 - XML/Dom loading starts for file  C:\workspace\AgileComplianceJavaProject\SourceXMLs\SubGrpChildTest.xml
+2017-10-29 13:35:29 INFO  InitiateXMLReadWrite:335 - reading substances node for a material starts---
+2017-10-29 13:35:29 INFO  InitiateXMLReadWrite:316 - reading substances node for a material end---
+2017-10-29 13:35:29 INFO  InitiateXMLReadWrite:335 - reading substances node for a material starts---
+2017-10-29 13:35:29 INFO  InitiateXMLReadWrite:316 - reading substances node for a material end---
+2017-10-29 13:35:29 INFO  InitiateXMLReadWrite:511 - program InitiateXMLReadWrite end date time--2017/10/29 13:35:28
+2017-10-29 13:35:29 INFO  InitiateXMLReadWrite:513 - program InitiateXMLReadWrite completedIn milisecond --250
+2017-10-29 13:35:29 INFO  XMLParse_Main:123 - loading completed for file...exitting main method at- 2017-10-29 13-35-29
+2017-10-29 13:35:29 INFO  XMLParse_Main:135 - Disconnected from Agile session
