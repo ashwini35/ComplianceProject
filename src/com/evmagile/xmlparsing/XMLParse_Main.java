@@ -50,7 +50,7 @@ public class XMLParse_Main {
 				
 		 }catch(Exception ex) {
 	     	 
-		        log.info("Error while loading properties1 " +ex.getMessage());		        
+		        log.info("ERROR while loading properties1 " +ex.getMessage());		        
 		 }        		
 	
 	}
@@ -68,7 +68,7 @@ public class XMLParse_Main {
 			{
 				prop = new Properties();
 				prop.load(is);
-				log.debug("Property file loaded to Property Object");
+				//log.debug("Property file loaded to Property Object");
 			}
 		}
 		catch ( FileNotFoundException excep ) 
@@ -101,7 +101,7 @@ public class XMLParse_Main {
 		  {			
 			    sWorkingdirectory = System.getProperty("user.dir");                                
               
-			    System.out.println("sWorkingdirectory--"+sWorkingdirectory);
+			    System.out.println("Inside Main Program, compliance Import started :: sWorkingdirectory ::--"+sWorkingdirectory);
 			    
 				String propertyFilePath = sWorkingdirectory+"\\properties\\ComplianceProject.properties";								
 				
@@ -120,13 +120,13 @@ public class XMLParse_Main {
                 InitiateXMLReadWrite obj2 = new InitiateXMLReadWrite(obj1);
 			    obj2.readWriteXML();			    			    
 			    
-			    log.info("loading completed for file...exitting main method at- "+fileMangrInst.dateFormat.format(new Date())); 
+			    log.info("ComplianceProject main method ends at- "+fileMangrInst.dateFormat.format(new Date())); 
 			    
 			    //sendMail();
 			    
 		  }catch(Exception ex)
 		  {
-			  log.info("error in main "+ex.getMessage());
+			  log.info("ERROR in main --------------------------------------- "+ex.getMessage());
 			  ex.printStackTrace();			  
 		  }	
 		  finally

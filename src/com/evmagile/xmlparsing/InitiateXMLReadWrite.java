@@ -51,10 +51,10 @@ class InitiateXMLReadWrite
 	
 	File[] getXMLFilesByDirName(String sDir)
 	{
-		File dir = new File(sDir);
-		
-		FileFilter filter = (File file) -> file.isFile() && file.getName().endsWith(".xml");
-		
+		log.info("Creating Array of xml file starts - from source directory --" + sDir);
+		File dir = new File(sDir);		
+		FileFilter filter = (File file) -> file.isFile() && file.getName().endsWith(".xml");		
+		log.info("Creating Array of xml file starts - from source directory --");
 		return dir.listFiles(filter);
 	}
 	
@@ -127,10 +127,12 @@ class InitiateXMLReadWrite
 		   if("SubstanceName".equals(element2.getName())&&!subsNameAsPerAgile.equals(element2.getText())) 
 		   {
 			   element2.setText(subsNameAsPerAgile);
+			   log.info("~INFO::~ SubstanceName Renaming ~  ~  ~  "+subsNameAsPerAgile);
 		   }
 		   if("ChildLevel".equals(element2.getName())) 
 		   {
 			   element2.setText(sLevel);
+			   log.info("~INFO::~ SubstanceLevelAdjustment ~  ~  ~  "+subsNameAsPerAgile+"~"+sLevel);
 		   }
 		}		
 	}
@@ -143,6 +145,8 @@ class InitiateXMLReadWrite
 		   if("SubstanceName".equals(element2.getName())&&!subsNameAsPerAgile.equals(element2.getText())) 
 		   {
 			   element2.setText(subsNameAsPerAgile);
+			   log.info("~INFO::~ SubstanceName Renaming ~  ~  ~  "+subsNameAsPerAgile);
+
 		   }
 		}		
 	}
@@ -164,6 +168,7 @@ class InitiateXMLReadWrite
 		SubstanceNode.addContent(ChildLevel);
 		SubstanceNode.addContent(childSubNode);
 		parentElement.addContent(SubstanceNode);
+		log.info("~INFO::~NewSubGrp having ChildSize-"+childSubNode.size()+"~"+subGrpNameAsPerAgile);
 	}
 	
 	private void populateSubsGrpToBeCreatedMap(HashMap<String,List<Element>> hmSubsGrpToBeCreated, Element substanceElment, String sSubGrpNameAsPerAgile1 ) 
@@ -207,8 +212,11 @@ class InitiateXMLReadWrite
 				  if(sSubGrpNameKeys.contains(sSubGrpNameAsPerAgile)) //if true move level2 substance under its already existing substance grp within same material context
 				  {				    						    
 					  parentElement.removeContent(substancenode);
+					  log.info("~INFO::~ Level2 Substance Detachment For ~ "+casNumberKey);
 					  modifySubstance_Name_Level(substancenode,sSubNameAsPerAgile,"3"); //new code 1
-					  substancegrpnode.addContent(substancenode);						    																						 												
+					  substancegrpnode.addContent(substancenode);
+					  log.info("~INFO::~ level2 substance is re-Attached successfully at level3 for/under casnumber & SubstanceGrp :: ~ "+casNumberKey+" ~ "+sSubGrpNameAsPerAgile);
+
 				  }else 
 				  {					  
 					  if(sSubGrpNameAsPerAgile.isEmpty()) // true indicate that substance at level2 in source xml doesnt belong to any substance grp
@@ -219,6 +227,7 @@ class InitiateXMLReadWrite
 					  {
 						  //create new substance grp node and attach substance child with cas number -- start
 						  parentElement.removeContent(substancenode);
+						  log.info("~INFO::~ level2 substance is detached successfully for cas number :: ~ "+casNumberKey);						  
 						  modifySubstance_Name_Level(substancenode,sSubNameAsPerAgile,"3");
 						  //createNewSubGrpAttachChild(sSubGrpNameAsPerAgile,substancenode,parentElement);						  
 						  populateSubsGrpToBeCreatedMap(hmSubsGrpToBeCreated,substancenode,sSubGrpNameAsPerAgile);
@@ -229,7 +238,7 @@ class InitiateXMLReadWrite
 			  else 
 			  {
 				  //return code to abolish execution for entire source xmls- start
-				  log.info("Error:: Compliance Import for Source XML abolished due casNumber: "+casNumberKey+" : not found in Agile...............");
+				  log.info("~ERROR::~ Compliance Import for Source XML abolished due casNumber: "+casNumberKey+" : not found in Agile. ~ "+casNumberKey);
 				  bSuccess = false;
 				  break;
 				  //return code to abolish execution for entire source xmls- end
@@ -269,14 +278,17 @@ class InitiateXMLReadWrite
 	            	                  if("".equals(sSubGrpNameAsPerAgile1))//if group name is empty 
 	            	                  {
 	            	                	  subsGrpElement.removeContent(rootSubstance_Level3);
+	            						  log.info("~INFO::~ level3 substance is detached successfully for cas number :: ~ "+sCasNumber);
 	            						  modifySubstance_Name_Level(rootSubstance_Level3,sSubNameAsPerAgile1,"2"); //new code 1
 	            						  materialElement.addContent(rootSubstance_Level3);
+	            						  log.info("~INFO::~ level3 substance is re-Attached successfully at level2 for/under casnumber & parent Material :: ~ "+sCasNumber+" ~ ");
 	            	                  } else if(sSubGrpName.equals(sSubGrpNameAsPerAgile1)) 
 	            	                  {
 	            						  modifySubstanceName(rootSubstance_Level3,sSubNameAsPerAgile1); //new code 2
 	            	                  } else 
 	            	                  {
 	            	                	  subsGrpElement.removeContent(rootSubstance_Level3);
+	            						  log.info("~INFO::~ level3 substance is detached successfully for cas number :: ~ "+sCasNumber);
 	            	                	  modifySubstance_Name_Level(rootSubstance_Level3,sSubNameAsPerAgile1,"3");
 	            	                	  populateSubsGrpToBeCreatedMap(hmSubsGrpToBeCreated,rootSubstance_Level3,sSubGrpNameAsPerAgile1);
 	            	                  }
@@ -284,7 +296,7 @@ class InitiateXMLReadWrite
 	            				  else 
 	            				  {
 	            					  //return code to abolish execution for entire source xmls- start
-	            					  log.info("Error:: Compliance Import for Source XML abolished due casNumber: "+sCasNumber+" : not found in Agile...............");
+	            					  log.info("~ERROR::~ Compliance Import for Source XML abolished due casNumber: "+sCasNumber+" : not found in Agile...............");
 	            					  bSuccess = false;
 	            					  break;
 	            					  //return code to abolish execution for entire source xmls- end
@@ -299,6 +311,8 @@ class InitiateXMLReadWrite
 	            		if(tempChildSublist.isEmpty()) 
 	            		{
 	            			materialElement.removeContent(subGrpElement);
+  						    log.info("~INFO::~ substance group is deleted from material due to no children exit scenario :: ~ ~ "+sSubGrpName);
+
 	            		}
 				  }
 				  
@@ -318,7 +332,7 @@ class InitiateXMLReadWrite
 			
 			//loop through hmSubGrpName_SubGrpElementPair to modify/delete substance group child substance node as per Agile-end
 		}
-		log.info("reading substances node for a material end---");
+		log.info("reading substances node for a material end ------------------------");
 		return bSuccess;
     }
     
@@ -337,7 +351,7 @@ class InitiateXMLReadWrite
 		
 		if(listSubstance_SubGrpLevel_2!=null) 
 		{
-			log.info("reading substances node for a material starts---");
+			log.info("reading substances node for a material starts ------------------------");
 			return modifyLevel2_substancesNodesForMaterial(listSubstance_SubGrpLevel_2);	
 		}else
 		{
@@ -465,7 +479,7 @@ class InitiateXMLReadWrite
 	
 	void readWriteXML () throws Exception
 	{
-		log.debug("------------readWriteXML method start..................");				
+		log.info("------------readWriteXML method start..................");				
 		Document document = null;
 
 		arrFilesPath = getXMLFilesByDirName(obj1.sSourceXMLDirPath);
@@ -476,15 +490,22 @@ class InitiateXMLReadWrite
 		}
 		
 		String sTargetXMLFolderPath = obj1.sTargetXMLAbsPath;
-		FileManager.createOrReplaceFileAndDirectories(sTargetXMLFolderPath);
+		try 
+		{
+			FileManager.createOrReplaceFileAndDirectories(sTargetXMLFolderPath);
+		}catch(Exception ex)
+		{
+			throw new Exception("Exception in createOrReplaceFileAndDirectories. Program Aborted----------- "+ex.getMessage());
+		}
 		
 		ParseCSV objCSV = new ParseCSV();
 		csvInput = objCSV.getMapByCSV(obj1.sSourceCSVPath);
 		
-		if(csvInput==null) 
+/*		if(csvInput==null) 
 		{
-			csvInput = getSubstanceInfoMapfromAgile(arrFilesPath); //Method 2 code
-		}
+			//csvInput = getSubstanceInfoMapfromAgile(arrFilesPath); //Method 2 code
+			throw new Exception("ERROR while reading input csv file 3---------------------------------------");
+		}*/
     	List <Element> listMaterial_ChildLevel_1  = null;		    	
     	
     	long completedIn;
@@ -495,7 +516,7 @@ class InitiateXMLReadWrite
 			{
 				boolean bSuccess = true;
 				sXMLAbsFileName = arrFilesPath[x].getAbsolutePath() ;
-				log.info("XML/Dom loading starts for file  "+ sXMLAbsFileName);	
+				log.info("XML/Dom manipulation starts for file ------------------ "+ sXMLAbsFileName);	
 				document = getSAXParsedDocument(sXMLAbsFileName);
                 sXMLAbsFileName = arrFilesPath[x].getName();
             	
@@ -513,18 +534,20 @@ class InitiateXMLReadWrite
 						createTargetXMLByDocumentInfo(document,sTargetXMLFolderPath+File.separator+sXMLAbsFileName);
 					}
 					
-					log.info("program InitiateXMLReadWrite end date time--" + dateFormat.format(date));
-					completedIn = System.currentTimeMillis() - time;
-					log.info("program InitiateXMLReadWrite completedIn milisecond --" + completedIn);
 				}
+				log.info("XML/Dom manipulation ENDs for file ------------------ "+ sXMLAbsFileName);	
 			}
+			
+			log.info("program InitiateXML.ReadWrite end date time--" + dateFormat.format(date));
+			completedIn = System.currentTimeMillis() - time;
+			log.info("program InitiateXML.ReadWrite completedIn milisecond --" + completedIn);
 		}
 		else 
 		{
 			log.info("Program exits due to csv input file reading error.Please check source directory path");				
             throw new IOException("Program exits due to csv input file reading error");
 		}
-		
+		log.info("------------readWriteXML method end..................");
 	}
     
 }

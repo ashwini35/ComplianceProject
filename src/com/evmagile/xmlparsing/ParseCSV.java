@@ -25,7 +25,8 @@ public class ParseCSV {
 	
 	 public HashMap getMapByCSV (String sSourceCSVPath) throws Exception
 	 {
-				
+
+		 log.info("Parsing source csv input/Agile input data starts after referring  : --------------- "+sSourceCSVPath);
 		 boolean bSuccess = true;
 		 String [] arrHeaderNames = null;
 		 int rownumber=0;
@@ -43,16 +44,17 @@ public class ParseCSV {
 				 catch(Exception ex)
 				 {
 					bSuccess = false;
-					log.info("Error while reading input csv file "+ex.getMessage());
+					log.info("ERROR while reading input csv file1 --------------------------------------- "+ex.getMessage());
 					ex.printStackTrace();
 					return null;
 				 }
 				
+			     log.info("Parsing source csv input/Agile input data ends after referring  : --------------- "+sSourceCSVPath);				
+				 log.info("Creating map from CSV input/Agile Input starts ------------------ --------------- ");	
+				 
 				if(csvObjInputDetail!=null)
 				{
-					 long start = System.currentTimeMillis();
-					 
-					 log.info(" ~ INFO  :: ~ looping through input csv data file -Start... ");	
+					 long start = System.currentTimeMillis();					 
 				     String [] nextLine;				     				   
 				     while ((nextLine = csvObjInputDetail.readNext()) != null)
 				     {
@@ -72,7 +74,9 @@ public class ParseCSV {
 				        	}catch(Exception ex)
 				        	{		
 				        		bSuccess = false;
-				        		log.info(" ~ ERROR :: ~ ROW "+rownumber+" ~ "+hmRow+" ~ CSV Reading skipped due to error :: "+ex.getMessage());					        		
+				        		log.info(" ~ ERROR :: ~ ROW "+rownumber+" ~ "+hmRow+" ~ CSV Reading skipped due to error :: ");		
+								log.info("ERROR while reading input csv file2 --------------------------------------- "+ex.getMessage());
+								ex.printStackTrace();
 				        	}
 
 				        }else
@@ -87,13 +91,10 @@ public class ParseCSV {
 					  lTotalExecutionTime = formatter.format((end - start) / 1000d);
 					  
 				 }				
-				log.info("CSV Input Data read completed from file:: "+ inputFilePathName+ " TotalExecutionTime "+lTotalExecutionTime);
-
-				//log.info("inputRowList size :: "+ inputRowList.size());
-				//log.info("inputRowList values :: "+ inputRowList);
-
-				log.info("hmCasNum_SubstanceInfo size:: "+ hmCasNum_SubstanceInfo.size());
-				//log.info("hmCasNum_SubstanceInfo values:: "+ hmCasNum_SubstanceInfo);
+				log.info("Creating map from CSV input/Agile Input ends with TotalExecutionTime :: ------------------"+lTotalExecutionTime);				 
+				log.info("CSV input/Agile Input map : hmCasNum_SubstanceInfo :: size :: ------------------ "+ hmCasNum_SubstanceInfo.size());
+				
+				log.debug("---------hmCasNum_SubstanceInfo values:: ----"+ hmCasNum_SubstanceInfo);
 				
 				return bSuccess ? hmCasNum_SubstanceInfo : null;
 				
