@@ -35,6 +35,31 @@
 				  <ChildLevel>1</ChildLevel>
 				  <ResultMass UOM="Gram">0.292</ResultMass>
 				  <SubstanceNode>
+					<SubstanceName>Level2SubNewUniqueGrpCreationTest1</SubstanceName>
+					<CasNumber>Level2SubNewUniqueGrpCreationTest1</CasNumber>
+					<DeclaredPpm>666700</DeclaredPpm>
+					<SubstanceType>substances</SubstanceType>
+					<LifecyclePhase>Active</LifecyclePhase>
+					<CalculatedMass UOM="Gram">0.1946764</CalculatedMass>
+					<ChildLevel>2</ChildLevel>
+					<ResultMass UOM="Gram">0.1946764</ResultMass>
+					<ResultPpm>666700</ResultPpm>
+					<UserEnteredCasNumber>Level2SubNewUniqueGrpCreationTest1</UserEnteredCasNumber>
+				  </SubstanceNode>
+				  <SubstanceNode>
+					<SubstanceName>Level2SubNewUniqueGrpCreationTest2</SubstanceName>
+					<CasNumber>Level2SubNewUniqueGrpCreationTest2</CasNumber>
+					<DeclaredPpm>666700</DeclaredPpm>
+					<SubstanceType>substances</SubstanceType>
+					<LifecyclePhase>Active</LifecyclePhase>
+					<CalculatedMass UOM="Gram">0.1946764</CalculatedMass>
+					<ChildLevel>2</ChildLevel>
+					<ResultMass UOM="Gram">0.1946764</ResultMass>
+					<ResultPpm>666700</ResultPpm>
+					<UserEnteredCasNumber>Level2SubNewUniqueGrpCreationTest2</UserEnteredCasNumber>
+				  </SubstanceNode>
+
+				  <SubstanceNode>
 					<SubstanceName>Polyethylene terephthalate (PET)</SubstanceName>
 					<CasNumber>25038-59-9</CasNumber>
 					<DeclaredPpm>666700</DeclaredPpm>

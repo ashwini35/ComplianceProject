@@ -104,12 +104,6 @@
               <ChildLevel>3</ChildLevel>
               <UserEnteredCasNumber>SubstGrpTest3</UserEnteredCasNumber>
             </SubstanceNode>
-          </SubstanceNode>
-          <SubstanceNode xmlns="">
-            <SubstanceName>CreateGrpTest2</SubstanceName>
-            <SubstanceType>Substance Groups</SubstanceType>
-            <LifecyclePhase>Active</LifecyclePhase>
-            <ChildLevel>2</ChildLevel>
             <SubstanceNode xmlns="http://www.oracle.com/webfolder/technetwork/xml/plm/2011/09/">
               <SubstanceName>SubstGrpTest4</SubstanceName>
               <CasNumber>SubstGrpTest4</CasNumber>
@@ -120,14 +114,8 @@
               <ChildLevel>3</ChildLevel>
               <UserEnteredCasNumber>SubstGrpTest4</UserEnteredCasNumber>
             </SubstanceNode>
-          </SubstanceNode>
-          <SubstanceNode xmlns="">
-            <SubstanceName>CreateGrpTest2</SubstanceName>
-            <SubstanceType>Substance Groups</SubstanceType>
-            <LifecyclePhase>Active</LifecyclePhase>
-            <ChildLevel>2</ChildLevel>
             <SubstanceNode xmlns="http://www.oracle.com/webfolder/technetwork/xml/plm/2011/09/">
-              <SubstanceName>SubstGrpTest5</SubstanceName>
+              <SubstanceName>SubstGrpTestChangeNameTest2</SubstanceName>
               <CasNumber>SubstGrpTest5</CasNumber>
               <DeclaredPpm>300</DeclaredPpm>
               <ConversionFactor>1</ConversionFactor>
@@ -135,6 +123,36 @@
               <LifecyclePhase>Active</LifecyclePhase>
               <ChildLevel>3</ChildLevel>
               <UserEnteredCasNumber>SubstGrpTest5</UserEnteredCasNumber>
+            </SubstanceNode>
+          </SubstanceNode>
+          <SubstanceNode xmlns="">
+            <SubstanceName>commonGrpForLevel2Sub</SubstanceName>
+            <SubstanceType>Substance Groups</SubstanceType>
+            <LifecyclePhase>Active</LifecyclePhase>
+            <ChildLevel>2</ChildLevel>
+            <SubstanceNode xmlns="http://www.oracle.com/webfolder/technetwork/xml/plm/2011/09/">
+              <SubstanceName>Level2SubNewUniqueGrpCreationTest2</SubstanceName>
+              <CasNumber>Level2SubNewUniqueGrpCreationTest2</CasNumber>
+              <DeclaredPpm>666700</DeclaredPpm>
+              <SubstanceType>substances</SubstanceType>
+              <LifecyclePhase>Active</LifecyclePhase>
+              <CalculatedMass UOM="Gram">0.1946764</CalculatedMass>
+              <ChildLevel>3</ChildLevel>
+              <ResultMass UOM="Gram">0.1946764</ResultMass>
+              <ResultPpm>666700</ResultPpm>
+              <UserEnteredCasNumber>Level2SubNewUniqueGrpCreationTest2</UserEnteredCasNumber>
+            </SubstanceNode>
+            <SubstanceNode xmlns="http://www.oracle.com/webfolder/technetwork/xml/plm/2011/09/">
+              <SubstanceName>Level2SubNewUniqueGrpCreationTest1</SubstanceName>
+              <CasNumber>Level2SubNewUniqueGrpCreationTest1</CasNumber>
+              <DeclaredPpm>666700</DeclaredPpm>
+              <SubstanceType>substances</SubstanceType>
+              <LifecyclePhase>Active</LifecyclePhase>
+              <CalculatedMass UOM="Gram">0.1946764</CalculatedMass>
+              <ChildLevel>3</ChildLevel>
+              <ResultMass UOM="Gram">0.1946764</ResultMass>
+              <ResultPpm>666700</ResultPpm>
+              <UserEnteredCasNumber>Level2SubNewUniqueGrpCreationTest1</UserEnteredCasNumber>
             </SubstanceNode>
           </SubstanceNode>
         </SubstanceNode>

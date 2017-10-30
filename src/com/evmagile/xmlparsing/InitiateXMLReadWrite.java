@@ -1,11 +1,11 @@
 package com.evmagile.xmlparsing;
 
-import com.evmagile.db.utility.SubstanceUtility;
-import com.evmagile.filemanager.FileManager;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -20,8 +20,9 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
+import com.evmagile.db.utility.SubstanceUtility;
+import com.evmagile.filemanager.FileManager;
 
 class InitiateXMLReadWrite
 {
@@ -146,7 +147,7 @@ class InitiateXMLReadWrite
 		}		
 	}
 	
-	private void createNewSubGrpAttachChild(String subGrpNameAsPerAgile,Element childSubNode, Element parentElement) 
+	private void createNewSubGrpAttachChild(String subGrpNameAsPerAgile,List<Element> childSubNode, Element parentElement) 
 	{
 		Element SubstanceNode = new Element("SubstanceNode");
 		Element SubstanceName = new Element("SubstanceName");
@@ -161,8 +162,24 @@ class InitiateXMLReadWrite
 		SubstanceNode.addContent(SubstanceType);
 		SubstanceNode.addContent(LifecyclePhase);
 		SubstanceNode.addContent(ChildLevel);
-		SubstanceNode.addContent(childSubNode);	
+		SubstanceNode.addContent(childSubNode);
 		parentElement.addContent(SubstanceNode);
+	}
+	
+	private void populateSubsGrpToBeCreatedMap(HashMap<String,List<Element>> hmSubsGrpToBeCreated, Element substanceElment, String sSubGrpNameAsPerAgile1 ) 
+	{
+	  	  Object obj3=hmSubsGrpToBeCreated.get(sSubGrpNameAsPerAgile1);	            	                	  
+	  	  if(obj3==null) 
+	  	  {	            	  
+	  		  List<Element>tempList1 = new ArrayList<Element>();
+	  		  tempList1.add(substanceElment);
+	      	  hmSubsGrpToBeCreated.put(sSubGrpNameAsPerAgile1.toString(),tempList1);
+	  	  }else 
+	  	  {
+	  		  List<Element>tempList1 = hmSubsGrpToBeCreated.get(sSubGrpNameAsPerAgile1);
+	  		  tempList1.add(substanceElment);
+	  		  hmSubsGrpToBeCreated.put(sSubGrpNameAsPerAgile1, tempList1);
+	  	  }
 	}
 	
     private boolean modifyMaterialDOMBasedOn_SourceXMLMap_InputCSVMap(HashMap<String, Element> hmCasNum_SubstancePair,HashMap<String, Element> hmSubGrpName_SubGrpElementPair) throws Exception
@@ -170,6 +187,7 @@ class InitiateXMLReadWrite
     	boolean bSuccess = true;
 		if(!hmCasNum_SubstancePair.isEmpty()) 
 		{
+			HashMap<String,List<Element>> hmSubsGrpToBeCreated = new HashMap<String,List<Element>>();
 			Set sSubGrpNameKeys = hmSubGrpName_SubGrpElementPair.keySet();
 			Iterator iter=hmCasNum_SubstancePair.keySet().iterator();
 			while(iter.hasNext())
@@ -186,14 +204,14 @@ class InitiateXMLReadWrite
 				  Element parentElement = substancenode.getParentElement();
 				  Element substancegrpnode = hmSubGrpName_SubGrpElementPair.get(sSubGrpNameAsPerAgile);		
 				  
-				  if(sSubGrpNameKeys.contains(sSubGrpNameAsPerAgile)) 
+				  if(sSubGrpNameKeys.contains(sSubGrpNameAsPerAgile)) //if true move level2 substance under its already existing substance grp within same material context
 				  {				    						    
 					  parentElement.removeContent(substancenode);
 					  modifySubstance_Name_Level(substancenode,sSubNameAsPerAgile,"3"); //new code 1
 					  substancegrpnode.addContent(substancenode);						    																						 												
 				  }else 
 				  {					  
-					  if(sSubGrpNameAsPerAgile.isEmpty()) 
+					  if(sSubGrpNameAsPerAgile.isEmpty()) // true indicate that substance at level2 in source xml doesnt belong to any substance grp
 					  {
 						  modifySubstanceName(substancenode,sSubNameAsPerAgile); //new code 2
 						  
@@ -202,7 +220,8 @@ class InitiateXMLReadWrite
 						  //create new substance grp node and attach substance child with cas number -- start
 						  parentElement.removeContent(substancenode);
 						  modifySubstance_Name_Level(substancenode,sSubNameAsPerAgile,"3");
-						  createNewSubGrpAttachChild(sSubGrpNameAsPerAgile,substancenode,parentElement);
+						  //createNewSubGrpAttachChild(sSubGrpNameAsPerAgile,substancenode,parentElement);						  
+						  populateSubsGrpToBeCreatedMap(hmSubsGrpToBeCreated,substancenode,sSubGrpNameAsPerAgile);
 						  //create new substance grp node and attach substance child with cas number -- end
 					  }
 				  }
@@ -218,7 +237,6 @@ class InitiateXMLReadWrite
 			}
 			//loop through hmSubGrpName_SubGrpElementPair to modify/delete substance group child substance node as per Agile--start 
 			Iterator iter1 = sSubGrpNameKeys.iterator();
-			HashMap<String,List<Element>> hmSubsGrpToBeCreated = new HashMap<String,List<Element>>();
 			Element materialElement = null;
 			while(iter1.hasNext()) // loop through multiple grp name key for a material
 			{
@@ -259,18 +277,8 @@ class InitiateXMLReadWrite
 	            	                  } else 
 	            	                  {
 	            	                	  subsGrpElement.removeContent(rootSubstance_Level3);
-	            	                	  Object obj3=hmSubsGrpToBeCreated.get(sSubGrpNameAsPerAgile1);	            	                	  
-	            	                	  if(obj3==null) 
-	            	                	  {	            	  
-	            	                		  List<Element>tempList1 = new ArrayList<Element>();
-	            	                		  tempList1.add(rootSubstance_Level3);
-		            	                	  hmSubsGrpToBeCreated.put(sSubGrpNameAsPerAgile1.toString(),tempList1);
-	            	                	  }else 
-	            	                	  {
-	            	                		  List<Element>tempList1 = hmSubsGrpToBeCreated.get(sSubGrpNameAsPerAgile1);
-	            	                		  tempList1.add(rootSubstance_Level3);
-	            	                		  hmSubsGrpToBeCreated.put(sSubGrpNameAsPerAgile1, tempList1);
-	            	                	  }
+	            	                	  modifySubstance_Name_Level(rootSubstance_Level3,sSubNameAsPerAgile1,"3");
+	            	                	  populateSubsGrpToBeCreatedMap(hmSubsGrpToBeCreated,rootSubstance_Level3,sSubGrpNameAsPerAgile1);
 	            	                  }
 	            				  }
 	            				  else 
@@ -305,10 +313,7 @@ class InitiateXMLReadWrite
 			{
 				String sGrpName = iter3.next();
 				List<Element> sChildSubstance = hmSubsGrpToBeCreated.get(sGrpName);
-				for(Element subsNode : sChildSubstance) 
-				{
-					createNewSubGrpAttachChild(sGrpName, subsNode, materialElement);
-				}
+				createNewSubGrpAttachChild(sGrpName, sChildSubstance, materialElement);
 			}
 			
 			//loop through hmSubGrpName_SubGrpElementPair to modify/delete substance group child substance node as per Agile-end

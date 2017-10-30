@@ -226,3 +226,101 @@
 2017-10-29 13:35:29 INFO  InitiateXMLReadWrite:513 - program InitiateXMLReadWrite completedIn milisecond --250
 2017-10-29 13:35:29 INFO  XMLParse_Main:123 - loading completed for file...exitting main method at- 2017-10-29 13-35-29
 2017-10-29 13:35:29 INFO  XMLParse_Main:135 - Disconnected from Agile session
+2017-10-29 17:18:40 INFO  XMLParse_Main:49 - all string constant/properties initilised successfully
+2017-10-29 17:18:40 INFO  XMLParse_Main:118 - ComplianceProject main method invoked followed with its constructor code execution at... 2017-10-29 17-18-40
+2017-10-29 17:18:40 INFO  InitiateXMLReadWrite:48 - program InitiateXMLReadWrite start date time--2017/10/29 17:18:40
+2017-10-29 17:18:40 INFO  InitiateXMLReadWrite:49 - program InitiateXMLReadWrite start milisecond --1509277720339
+2017-10-29 17:18:40 DEBUG InitiateXMLReadWrite:467 - ------------readWriteXML method start..................
+2017-10-29 17:18:40 INFO  InitiateXMLReadWrite:55 -  ~ INFO  :: ~ looping through input csv data file -Start... 
+2017-10-29 17:18:40 INFO  InitiateXMLReadWrite:90 - CSV Input Data read completed from file:: null TotalExecutionTime 0.02500
+2017-10-29 17:18:40 INFO  InitiateXMLReadWrite:95 - hmCasNum_SubstanceInfo size:: 806
+2017-10-29 17:18:40 INFO  InitiateXMLReadWrite:497 - XML/Dom loading starts for file  C:\workspace\AgileComplianceJavaProject\SourceXMLs\SubGrpChildTest.xml
+2017-10-29 17:18:40 INFO  InitiateXMLReadWrite:339 - reading substances node for a material starts---
+2017-10-29 17:18:40 INFO  InitiateXMLReadWrite:320 - reading substances node for a material end---
+2017-10-29 17:18:40 INFO  InitiateXMLReadWrite:339 - reading substances node for a material starts---
+2017-10-29 17:18:40 INFO  InitiateXMLReadWrite:320 - reading substances node for a material end---
+2017-10-29 17:18:40 INFO  XMLParse_Main:129 - error in main C:\workspace\AgileComplianceJavaProject\TargetXML\SubGrpChildTest.xml (The system cannot find the path specified)
+2017-10-29 17:18:40 INFO  XMLParse_Main:135 - Disconnected from Agile session
+2017-10-29 17:20:56 INFO  XMLParse_Main:49 - all string constant/properties initilised successfully
+2017-10-29 17:20:56 INFO  XMLParse_Main:118 - ComplianceProject main method invoked followed with its constructor code execution at... 2017-10-29 17-20-56
+2017-10-29 17:20:56 INFO  InitiateXMLReadWrite:48 - program InitiateXMLReadWrite start date time--2017/10/29 17:20:56
+2017-10-29 17:20:56 INFO  InitiateXMLReadWrite:49 - program InitiateXMLReadWrite start milisecond --1509277856551
+2017-10-29 17:20:56 DEBUG InitiateXMLReadWrite:467 - ------------readWriteXML method start..................
+2017-10-29 17:20:56 INFO  InitiateXMLReadWrite:55 -  ~ INFO  :: ~ looping through input csv data file -Start... 
+2017-10-29 17:20:56 INFO  InitiateXMLReadWrite:90 - CSV Input Data read completed from file:: null TotalExecutionTime 0.02700
+2017-10-29 17:20:56 INFO  InitiateXMLReadWrite:95 - hmCasNum_SubstanceInfo size:: 806
+2017-10-29 17:20:56 INFO  InitiateXMLReadWrite:497 - XML/Dom loading starts for file  C:\workspace\AgileComplianceJavaProject\SourceXMLs\SubGrpChildTest.xml
+2017-10-29 17:20:56 INFO  InitiateXMLReadWrite:339 - reading substances node for a material starts---
+2017-10-29 17:20:56 INFO  InitiateXMLReadWrite:320 - reading substances node for a material end---
+2017-10-29 17:20:56 INFO  InitiateXMLReadWrite:339 - reading substances node for a material starts---
+2017-10-29 17:20:56 INFO  InitiateXMLReadWrite:320 - reading substances node for a material end---
+2017-10-29 17:20:56 INFO  InitiateXMLReadWrite:515 - program InitiateXMLReadWrite end date time--2017/10/29 17:20:56
+2017-10-29 17:20:56 INFO  InitiateXMLReadWrite:517 - program InitiateXMLReadWrite completedIn milisecond --223
+2017-10-29 17:20:56 INFO  XMLParse_Main:123 - loading completed for file...exitting main method at- 2017-10-29 17-20-56
+2017-10-29 17:20:56 INFO  XMLParse_Main:135 - Disconnected from Agile session
+2017-10-29 21:21:36 INFO  XMLParse_Main:49 - all string constant/properties initilised successfully
+2017-10-29 21:21:36 INFO  XMLParse_Main:118 - ComplianceProject main method invoked followed with its constructor code execution at... 2017-10-29 21-21-36
+2017-10-29 21:21:36 INFO  InitiateXMLReadWrite:48 - program InitiateXMLReadWrite start date time--2017/10/29 21:21:36
+2017-10-29 21:21:36 INFO  InitiateXMLReadWrite:49 - program InitiateXMLReadWrite start milisecond --1509292296950
+2017-10-29 21:21:36 DEBUG InitiateXMLReadWrite:467 - ------------readWriteXML method start..................
+2017-10-29 21:21:37 INFO  InitiateXMLReadWrite:55 -  ~ INFO  :: ~ looping through input csv data file -Start... 
+2017-10-29 21:21:37 INFO  InitiateXMLReadWrite:90 - CSV Input Data read completed from file:: null TotalExecutionTime 0.03200
+2017-10-29 21:21:37 INFO  InitiateXMLReadWrite:95 - hmCasNum_SubstanceInfo size:: 808
+2017-10-29 21:21:37 INFO  InitiateXMLReadWrite:497 - XML/Dom loading starts for file  C:\workspace\AgileComplianceJavaProject\SourceXMLs\SubGrpChildTest.xml
+2017-10-29 21:21:37 INFO  InitiateXMLReadWrite:339 - reading substances node for a material starts---
+2017-10-29 21:21:37 INFO  InitiateXMLReadWrite:320 - reading substances node for a material end---
+2017-10-29 21:21:37 INFO  InitiateXMLReadWrite:339 - reading substances node for a material starts---
+2017-10-29 21:21:37 INFO  InitiateXMLReadWrite:320 - reading substances node for a material end---
+2017-10-29 21:21:37 INFO  InitiateXMLReadWrite:515 - program InitiateXMLReadWrite end date time--2017/10/29 21:21:36
+2017-10-29 21:21:37 INFO  InitiateXMLReadWrite:517 - program InitiateXMLReadWrite completedIn milisecond --296
+2017-10-29 21:21:37 INFO  XMLParse_Main:123 - loading completed for file...exitting main method at- 2017-10-29 21-21-37
+2017-10-29 21:21:37 INFO  XMLParse_Main:135 - Disconnected from Agile session
+2017-10-29 21:31:40 INFO  XMLParse_Main:49 - all string constant/properties initilised successfully
+2017-10-29 21:31:40 INFO  XMLParse_Main:118 - ComplianceProject main method invoked followed with its constructor code execution at... 2017-10-29 21-31-40
+2017-10-29 21:31:40 INFO  InitiateXMLReadWrite:48 - program InitiateXMLReadWrite start date time--2017/10/29 21:31:40
+2017-10-29 21:31:40 INFO  InitiateXMLReadWrite:49 - program InitiateXMLReadWrite start milisecond --1509292900641
+2017-10-29 21:31:40 DEBUG InitiateXMLReadWrite:468 - ------------readWriteXML method start..................
+2017-10-29 21:31:40 INFO  InitiateXMLReadWrite:55 -  ~ INFO  :: ~ looping through input csv data file -Start... 
+2017-10-29 21:31:40 INFO  InitiateXMLReadWrite:90 - CSV Input Data read completed from file:: null TotalExecutionTime 0.07400
+2017-10-29 21:31:40 INFO  InitiateXMLReadWrite:95 - hmCasNum_SubstanceInfo size:: 808
+2017-10-29 21:31:40 INFO  InitiateXMLReadWrite:498 - XML/Dom loading starts for file  C:\workspace\AgileComplianceJavaProject\SourceXMLs\SubGrpChildTest.xml
+2017-10-29 21:31:40 INFO  InitiateXMLReadWrite:340 - reading substances node for a material starts---
+2017-10-29 21:31:40 INFO  InitiateXMLReadWrite:321 - reading substances node for a material end---
+2017-10-29 21:31:40 INFO  InitiateXMLReadWrite:340 - reading substances node for a material starts---
+2017-10-29 21:31:40 INFO  InitiateXMLReadWrite:321 - reading substances node for a material end---
+2017-10-29 21:31:40 INFO  XMLParse_Main:129 - error in main C:\workspace\AgileComplianceJavaProject\TargetXML\SubGrpChildTest.xml (The system cannot find the path specified)
+2017-10-29 21:31:40 INFO  XMLParse_Main:135 - Disconnected from Agile session
+2017-10-29 21:32:23 INFO  XMLParse_Main:49 - all string constant/properties initilised successfully
+2017-10-29 21:32:23 INFO  XMLParse_Main:118 - ComplianceProject main method invoked followed with its constructor code execution at... 2017-10-29 21-32-23
+2017-10-29 21:32:23 INFO  InitiateXMLReadWrite:48 - program InitiateXMLReadWrite start date time--2017/10/29 21:32:23
+2017-10-29 21:32:23 INFO  InitiateXMLReadWrite:49 - program InitiateXMLReadWrite start milisecond --1509292943316
+2017-10-29 21:32:23 DEBUG InitiateXMLReadWrite:468 - ------------readWriteXML method start..................
+2017-10-29 21:32:23 INFO  InitiateXMLReadWrite:55 -  ~ INFO  :: ~ looping through input csv data file -Start... 
+2017-10-29 21:32:23 INFO  InitiateXMLReadWrite:90 - CSV Input Data read completed from file:: null TotalExecutionTime 0.02400
+2017-10-29 21:32:23 INFO  InitiateXMLReadWrite:95 - hmCasNum_SubstanceInfo size:: 808
+2017-10-29 21:32:23 INFO  InitiateXMLReadWrite:498 - XML/Dom loading starts for file  C:\workspace\AgileComplianceJavaProject\SourceXMLs\SubGrpChildTest.xml
+2017-10-29 21:32:23 INFO  InitiateXMLReadWrite:340 - reading substances node for a material starts---
+2017-10-29 21:32:23 INFO  InitiateXMLReadWrite:321 - reading substances node for a material end---
+2017-10-29 21:32:23 INFO  InitiateXMLReadWrite:340 - reading substances node for a material starts---
+2017-10-29 21:32:23 INFO  InitiateXMLReadWrite:321 - reading substances node for a material end---
+2017-10-29 21:32:23 INFO  InitiateXMLReadWrite:516 - program InitiateXMLReadWrite end date time--2017/10/29 21:32:23
+2017-10-29 21:32:23 INFO  InitiateXMLReadWrite:518 - program InitiateXMLReadWrite completedIn milisecond --230
+2017-10-29 21:32:23 INFO  XMLParse_Main:123 - loading completed for file...exitting main method at- 2017-10-29 21-32-23
+2017-10-29 21:32:23 INFO  XMLParse_Main:135 - Disconnected from Agile session
+2017-10-29 21:35:58 INFO  XMLParse_Main:49 - all string constant/properties initilised successfully
+2017-10-29 21:35:58 INFO  XMLParse_Main:118 - ComplianceProject main method invoked followed with its constructor code execution at... 2017-10-29 21-35-58
+2017-10-29 21:35:58 INFO  InitiateXMLReadWrite:48 - program InitiateXMLReadWrite start date time--2017/10/29 21:35:58
+2017-10-29 21:35:58 INFO  InitiateXMLReadWrite:49 - program InitiateXMLReadWrite start milisecond --1509293158224
+2017-10-29 21:35:58 DEBUG InitiateXMLReadWrite:468 - ------------readWriteXML method start..................
+2017-10-29 21:35:58 INFO  InitiateXMLReadWrite:55 -  ~ INFO  :: ~ looping through input csv data file -Start... 
+2017-10-29 21:35:58 INFO  InitiateXMLReadWrite:90 - CSV Input Data read completed from file:: null TotalExecutionTime 0.02900
+2017-10-29 21:35:58 INFO  InitiateXMLReadWrite:95 - hmCasNum_SubstanceInfo size:: 808
+2017-10-29 21:35:58 INFO  InitiateXMLReadWrite:498 - XML/Dom loading starts for file  C:\workspace\AgileComplianceJavaProject\SourceXMLs\SubGrpChildTest.xml
+2017-10-29 21:35:58 INFO  InitiateXMLReadWrite:340 - reading substances node for a material starts---
+2017-10-29 21:35:58 INFO  InitiateXMLReadWrite:321 - reading substances node for a material end---
+2017-10-29 21:35:58 INFO  InitiateXMLReadWrite:340 - reading substances node for a material starts---
+2017-10-29 21:35:58 INFO  InitiateXMLReadWrite:321 - reading substances node for a material end---
+2017-10-29 21:35:58 INFO  InitiateXMLReadWrite:516 - program InitiateXMLReadWrite end date time--2017/10/29 21:35:58
+2017-10-29 21:35:58 INFO  InitiateXMLReadWrite:518 - program InitiateXMLReadWrite completedIn milisecond --298
+2017-10-29 21:35:58 INFO  XMLParse_Main:123 - loading completed for file...exitting main method at- 2017-10-29 21-35-58
+2017-10-29 21:35:58 INFO  XMLParse_Main:135 - Disconnected from Agile session

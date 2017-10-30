@@ -813,3 +813,5 @@
 "CreateGrpTest2","SubstGrpTest3","SubstGrpTest3"
 "CreateGrpTest2","SubstGrpTest4","SubstGrpTest4"
 "CreateGrpTest2","SubstGrpTestChangeNameTest2","SubstGrpTest5"
+"commonGrpForLevel2Sub","Level2SubNewUniqueGrpCreationTest2","Level2SubNewUniqueGrpCreationTest2"
+"commonGrpForLevel2Sub","Level2SubNewUniqueGrpCreationTest1","Level2SubNewUniqueGrpCreationTest1"
