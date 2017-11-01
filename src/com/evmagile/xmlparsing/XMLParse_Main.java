@@ -28,6 +28,9 @@ public class XMLParse_Main {
 	String sSourceXMLDirPath = null;
     String sTargetXMLAbsPath = null;
     String sSourceCSVPath = null;     
+    String sFeedFilePath = null;   
+    int mftLimitPerMD ;
+
 	static IAgileSession agileSession = null;
 	
 
@@ -41,7 +44,9 @@ public class XMLParse_Main {
 				this.sSourceXMLDirPath= sWorkingdirectory+File.separator+prop.getProperty("ComplianceProject.SourceXML.inputPath");
 				this.sTargetXMLAbsPath=sWorkingdirectory+File.separator+prop.getProperty("ComplianceProject.TargetXML.inputPath");
 				this.sSourceCSVPath = sWorkingdirectory+File.separator+prop.getProperty("ComplianceProject.CSV.inputPath");
-						
+				this.sFeedFilePath = sWorkingdirectory+File.separator+prop.getProperty("ComplianceProject.CSV.feedFilePath");
+                this.mftLimitPerMD = Integer.parseInt(prop.getProperty("ComplianceProject.CSV.mftLimitPerMD"));
+				
 				fileMangrInst = new FileManager();
 				fileMangrInst.logFolderPath = sWorkingdirectory+prop.getProperty("ComplianceProject.LogFile.Log");
 				System.out.println(fileMangrInst.logFolderPath);				

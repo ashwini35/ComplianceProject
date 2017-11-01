@@ -23,12 +23,13 @@ import org.jdom2.output.XMLOutputter;
 
 import com.evmagile.db.utility.SubstanceUtility;
 import com.evmagile.filemanager.FileManager;
+import com.opencsv.CSVReader;
 
 class InitiateXMLReadWrite
 {
 	
 	Logger log = null;
-	File[] arrFilesPath = null;
+	//File[] arrFilesPath = null;
 	XMLParse_Main obj1 = null;
 	HashMap <String,String>csvInput = null;
 	XMLOutputter xmlOutput = null;
@@ -469,27 +470,52 @@ class InitiateXMLReadWrite
 		 }
 		return lsSourceXMLCasNumber.toArray(new String[0]);
 	}
-	
+	private Document createSkeletonDocument() 
+	{
+		Element AgileData = new Element("AgileData");		
+		Document document = new Document(AgileData);
+		Element HomogeniousMaterialDeclaration = new Element("HomogeniousMaterialDeclaration");
+		HomogeniousMaterialDeclaration.addContent(new Element("Specification").setText("Specification1"));
+		HomogeniousMaterialDeclaration.addContent(new Element("CoverPage").setText("CoverPage1"));
+		HomogeniousMaterialDeclaration.addContent(new Element("PageTwo").setText("Page2 text"));
+		//document.getRootElement().addContent(HomogeniousMaterialDeclaration);
+		AgileData.addContent(HomogeniousMaterialDeclaration);
+		return document;
+	}
 	private HashMap <String,String> getSubstanceInfoMapfromAgile(File[] arrFilesPath) throws Exception
 	{        
 		String[] arrSourceXMLCasNumber = getCASNumberOfAllSourceFiles(arrFilesPath);
 		SubstanceUtility obj2 = new SubstanceUtility(obj1);		
 		return obj2.fetchSubstanceAndGrpInfoMapfromAgile(arrSourceXMLCasNumber);
 	}
-	
+	private void updateSkeletonDocument(Document skeletonDocument,Document document) throws Exception
+	{
+
+		List <Element> Skeleton_HomoMatDeclElement1 =  skeletonDocument.getRootElement().getChildren();//list size will be always one
+		
+		List <Element> MFT_HomoMatDeclElement =  document.getRootElement().getChildren();//list size will be always one
+		List <Element> MFT_PartInfoElement  = getFirstLevelChildByElementName("ManufacturerParts",MFT_HomoMatDeclElement);//list size will be always one
+		List <Element> MFT_Composition  = getFirstLevelChildByElementName("ManufacturerPartComposition",MFT_HomoMatDeclElement);//list size will be always one
+
+		Element Skeleton_HomoMatDeclElement2 = (Element)Skeleton_HomoMatDeclElement1.get(0);
+		Skeleton_HomoMatDeclElement2.addContent((Element)MFT_PartInfoElement.get(0).detach());
+		Skeleton_HomoMatDeclElement2.addContent((Element)MFT_Composition.get(0).detach());
+
+	}
 	void readWriteXML () throws Exception
 	{
 		log.info("------------readWriteXML method start..................");				
 		Document document = null;
 
-		arrFilesPath = getXMLFilesByDirName(obj1.sSourceXMLDirPath);
+/*		arrFilesPath = getXMLFilesByDirName(obj1.sSourceXMLDirPath);
 		
 		if(arrFilesPath==null) 
 		{
 			throw new IOException("Source XML file reading error.Please check source directory path");
-		}
+		}*/
 		
 		String sTargetXMLFolderPath = obj1.sTargetXMLAbsPath;
+		int mftLimitPerMD = obj1.mftLimitPerMD;
 		try 
 		{
 			FileManager.createOrReplaceFileAndDirectories(sTargetXMLFolderPath);
@@ -509,16 +535,25 @@ class InitiateXMLReadWrite
     	List <Element> listMaterial_ChildLevel_1  = null;		    	
     	
     	long completedIn;
-    	
-		if(csvInput!= null)
+    	CSVReader feedFileReader = objCSV.getCSVReaderByFileAndDelimiter(obj1.sFeedFilePath, '|');
+		if(csvInput!= null & feedFileReader!=null)
 		{
-			for(int x=0;x<arrFilesPath.length;x++) 
-			{
+
+		String [] nextLine;
+		int row = 1;
+		Document skeletonDocument = null;
+		String sourceXMLNameBasedOnFeedFileRowNum = "";
+		int iMaterialDeclarationLimit = 0;
+		while ((nextLine = feedFileReader.readNext()) != null) 
+		{
+			    System.out.println("nextLine--"+ nextLine.toString());
+		
+				sourceXMLNameBasedOnFeedFileRowNum = "FeedFile_Row"+row+".xml";
 				boolean bSuccess = true;
-				sXMLAbsFileName = arrFilesPath[x].getAbsolutePath() ;
-				log.info("XML/Dom manipulation starts for file ------------------ "+ sXMLAbsFileName);	
-				document = getSAXParsedDocument(sXMLAbsFileName);
-                sXMLAbsFileName = arrFilesPath[x].getName();
+				//sXMLAbsFileName = arrFilesPath[x].getAbsolutePath() ;
+				log.info("XML/Dom manipulation starts for file ------------------ "+ sourceXMLNameBasedOnFeedFileRowNum);	
+				document = getSAXParsedDocument(obj1.sSourceXMLDirPath+File.separator+sourceXMLNameBasedOnFeedFileRowNum);
+                //sXMLAbsFileName = arrFilesPath[x].getName();
             	
 				if(document != null) 
 				{					
@@ -527,17 +562,33 @@ class InitiateXMLReadWrite
 					if(listMaterial_ChildLevel_1!=null) 
 					{
 						bSuccess = modifyAllMaterialSubNodesForGivenCondition(listMaterial_ChildLevel_1);	
-					}
 						
-					if(bSuccess) 
-					{
-						createTargetXMLByDocumentInfo(document,sTargetXMLFolderPath+File.separator+sXMLAbsFileName);
+						if(bSuccess && skeletonDocument!=null) 
+						{
+							 updateSkeletonDocument(skeletonDocument,document);
+							 iMaterialDeclarationLimit++;
+						}else if(bSuccess && skeletonDocument==null)
+						{
+							 skeletonDocument = createSkeletonDocument();
+							 updateSkeletonDocument(skeletonDocument,document);
+							 iMaterialDeclarationLimit=1;
+						}
 					}
-					
-				}
-				log.info("XML/Dom manipulation ENDs for file ------------------ "+ sXMLAbsFileName);	
-			}
-			
+											
+					if((skeletonDocument!=null && iMaterialDeclarationLimit == mftLimitPerMD)) 
+					{
+						createTargetXMLByDocumentInfo(skeletonDocument,sTargetXMLFolderPath+File.separator+sourceXMLNameBasedOnFeedFileRowNum);
+						skeletonDocument = null;
+						iMaterialDeclarationLimit = 0;
+					}					
+				}							
+				log.info("XML/Dom manipulation ENDs for file ------------------ "+ sourceXMLNameBasedOnFeedFileRowNum);			
+				row++;
+		 }
+		if(skeletonDocument!=null) 
+		{
+			createTargetXMLByDocumentInfo(skeletonDocument,sTargetXMLFolderPath+File.separator+sourceXMLNameBasedOnFeedFileRowNum);
+		}
 			log.info("program InitiateXML.ReadWrite end date time--" + dateFormat.format(date));
 			completedIn = System.currentTimeMillis() - time;
 			log.info("program InitiateXML.ReadWrite completedIn milisecond --" + completedIn);

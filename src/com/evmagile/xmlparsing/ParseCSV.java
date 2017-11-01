@@ -22,7 +22,19 @@ public class ParseCSV {
     	this.inputFilePathName = inputFilePathName;
     	//inputFilePathName = "C:\\help\\Agile PLM\\zebra\\ComplianceProject\\SubstanceGroup_Substance_CAS.csv";
 	}
-	
+	 public CSVReader getCSVReaderByFileAndDelimiter(String sSourceCSVPath,Character separator) 
+	 {
+			try
+			 {					
+				return new CSVReader(new FileReader(sSourceCSVPath),separator);
+			 }
+			 catch(Exception ex)
+			 {
+				log.info("ERROR while reading input csv file1 --------------------------------------- "+sSourceCSVPath+"---"+ex.getMessage());
+				ex.printStackTrace();
+				return null;
+			 }
+	 }
 	 public HashMap getMapByCSV (String sSourceCSVPath) throws Exception
 	 {
 
@@ -37,20 +49,15 @@ public class ParseCSV {
 		 String sDelimeter = "|";	
 			
 		 try{
-				try
-				 {					
-					csvObjInputDetail = new CSVReader(new FileReader(sSourceCSVPath));
-				 }
-				 catch(Exception ex)
+				 csvObjInputDetail = getCSVReaderByFileAndDelimiter(sSourceCSVPath,',');
+				 if(csvObjInputDetail==null) 
 				 {
-					bSuccess = false;
-					log.info("ERROR while reading input csv file1 --------------------------------------- "+ex.getMessage());
-					ex.printStackTrace();
-					return null;
+					 bSuccess = false;
 				 }
 				
 			     log.info("Parsing source csv input/Agile input data ends after referring  : --------------- "+sSourceCSVPath);				
 				 log.info("Creating map from CSV input/Agile Input starts ------------------ --------------- ");	
+				 
 				 
 				if(csvObjInputDetail!=null)
 				{
@@ -58,6 +65,7 @@ public class ParseCSV {
 				     String [] nextLine;				     				   
 				     while ((nextLine = csvObjInputDetail.readNext()) != null)
 				     {
+				    	 //HashMap hmRow = hmRow=new HashMap();
 				    	 HashMap hmRow = hmRow=new HashMap();
 				        if(rownumber>0)
 				        {
