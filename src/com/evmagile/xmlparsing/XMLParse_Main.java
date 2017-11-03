@@ -123,7 +123,7 @@ public class XMLParse_Main {
 			    log.info("ComplianceProject main method invoked followed with its constructor code execution at... "+fileMangrInst.timestamp);	
 			   			   			   			    			    			    
                 InitiateXMLReadWrite obj2 = new InitiateXMLReadWrite(obj1);
-			    obj2.readWriteXML();			    			    
+			    obj2.transforXMLs();			    			    
 			    
 			    log.info("ComplianceProject main method ends at- "+fileMangrInst.dateFormat.format(new Date())); 
 			    
@@ -136,7 +136,7 @@ public class XMLParse_Main {
 		  }	
 		  finally
 		  {
-				//agileSession.close(); temporarily commented
+				agileSession.close(); 
 				log.info("Disconnected from Agile session");
 				//sendMail();
 		  }

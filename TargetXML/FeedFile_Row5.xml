@@ -2,7 +2,10 @@
 <AgileData>
   <HomogeniousMaterialDeclaration>
     <Specification>Specification1</Specification>
-    <CoverPage>CoverPage1</CoverPage>
+    <CoverPage>
+      <Name>REVA_EC_2017-11-03 18-06-16_003</Name>
+      <DeclarationType>Homogeneous Material Declaration</DeclarationType>
+    </CoverPage>
     <PageTwo>Page2 text</PageTwo>
     <ManufacturerParts xmlns="http://www.oracle.com/webfolder/technetwork/xml/plm/2011/09/">
       <Mfr.PartNumber>ZBR-K20_ACM</Mfr.PartNumber>

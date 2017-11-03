@@ -36,11 +36,11 @@ public class SaveAsHMD {
                 * @param args
                 */
                    @SuppressWarnings({ "unchecked", "rawtypes" })
-                public static void main(String[] args) {
-                   try {
-              
+                public String getMDName_saveAsHMD (IAgileSession agileSession)
+                   {
+                   try {              
                        //connect to Agile Server
-                        agileSession = connect();
+                        //agileSession = connect();
                        
                                     String MD_Number="MD64426"; //Get data from properties file
                                     String Proc_Analyst="skrishnan"; //Get data from Properties file
@@ -73,7 +73,7 @@ public class SaveAsHMD {
                                                 String  MDSuffix="_003";
                                                
                                     //Format date for MD Number
-                                                SimpleDateFormat mdDateFormat = new SimpleDateFormat("yyyyMMdd");
+                                                SimpleDateFormat mdDateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
                                    
                                     //Suffix with Date & sequence number
                                     String MDnumber=MDPrefix + mdDateFormat.format(currDate) + MDSuffix;
@@ -106,7 +106,7 @@ public class SaveAsHMD {
  
                         //Save As with details
                         IDeclaration NewMD=(IDeclaration) MD.saveAs(DeclarationConstants.CLASS_HOMOGENEOUS_MATERIAL_DECLARATION, MDparams);
-                        System.out.println("New Declaration=" + NewMD.getName()); //Get New MD Number
+                        //System.out.println("New Declaration=" + NewMD.getName()); //Get New MD Number
                        
                       //Initialize the params for Manufacturer Parts
                         Map MFRparams = new HashMap();
@@ -119,15 +119,12 @@ public class SaveAsHMD {
                         ITable mfrTable = NewMD.getTable(DeclarationConstants.TABLE_MANUFACTURERPARTS);
                         //Add Mfr Part to MD's affected Mfr Part Tab
                                                 IRow row = mfrTable.createRow(mfrPart);
-                       
-                      } catch (APIException e) {
-                         e.printStackTrace();
-                      }
-                      finally
+                       return NewMD.getName();
+                      } 
+                      catch (APIException e) 
                       {
-                                         //disconnect from Agile Server
-                                                  agileSession.close();
-                                         System.out.println("Disconnected from server successfully!!!");
+                         e.printStackTrace();
+                         return "";
                       }
                    }
 }
