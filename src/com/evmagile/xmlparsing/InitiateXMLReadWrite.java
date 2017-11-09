@@ -123,38 +123,99 @@ class InitiateXMLReadWrite
         		}            		
 		}
 	}
-	private void modifySubstance_Name_Level(Element substancenode, String subsNameAsPerAgile,String sLevel) 
+	private void modifySubstance_Name_Level_Exemptions(Element substancenode, String subsNameAsPerAgile,String sLevel) 
 	{
 		List<Element> templist = substancenode.getChildren();
-		for (Element element2 : templist) 
-		{		     
+		Element DeclaredCompliance = null;
+		boolean removeDeclaredComplianceElment = false;
+		String sOldSubsNameGlobal = "";
+		for(int i=0;i<templist.size();i++)
+		 {		   
+		    Element element2 = (Element)templist.get(i);		     
+			String sElementName = element2.getName();
 			String sOldSubsName = element2.getText();
-		   if("SubstanceName".equals(element2.getName())&&!subsNameAsPerAgile.equals(sOldSubsName)) 
+		   if("SubstanceName".equals(sElementName)&&!subsNameAsPerAgile.equals(sOldSubsName)) 
 		   {
 			   element2.setText(subsNameAsPerAgile);
 			   log.info("~INFO::~Substance_ReNaming_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldSubsName+"~"+subsNameAsPerAgile);
+			   sOldSubsNameGlobal = sOldSubsName;
 		   }
-		   if("ChildLevel".equals(element2.getName())) 
+		   if("ChildLevel".equals(sElementName)) 
 		   {
 			   element2.setText(sLevel);
 			   log.info("~INFO::~Substance_LevelCorrection_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldSubsName+"~"+subsNameAsPerAgile+"~"+sLevel);
 		   }
-		}		
+		   if("Exemptions".equals(sElementName)) 
+		   {
+			   List <Element> templist2 = element2.getChildren();
+			   Element valueTag = (Element)templist2.toArray()[0];
+			   String valueTagText = valueTag.getText();
+			   //if(valueTagText.equals("Test"))
+			   if(true)
+			   {
+				   substancenode.removeContent(element2);
+				   log.info("~INFO::~Substance_ExemptionsTagDetachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldSubsName+"~"+subsNameAsPerAgile+"~"+sLevel);
+				   removeDeclaredComplianceElment = true;
+				   i--;
+			   }
+		   }		   
+		   if("DeclaredCompliance".equals(sElementName)) 
+		   {
+			   DeclaredCompliance = element2;
+		   }
+		}				
+		if(removeDeclaredComplianceElment && DeclaredCompliance!=null) 
+		{
+			substancenode.removeContent(DeclaredCompliance);
+			log.info("~INFO::~Substance_DeclaredComplianceTagDetachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldSubsNameGlobal+"~"+subsNameAsPerAgile+"~"+sLevel);
+		}
 	}
 	
-	private void modifySubstanceName(Element substancenode, String subsNameAsPerAgile) 
+	private void modifySubstance_Name_Exemption(Element substancenode, String subsNameAsPerAgile) 
 	{
 		List<Element> templist = substancenode.getChildren();
-
-		for (Element element2 : templist) 
-		{		   
+		Element DeclaredCompliance = null;
+		boolean removeDeclaredComplianceElment = false;
+		String sOldSubsNameGlobal = "";
+		//Iterator <Element> itr = templist.listIterator();
+	    //while(itr.hasNext())
+		for(int i=0;i<templist.size();i++)
+		 {		   
+		    Element element2 = (Element)templist.get(i);
 			String sOldSubsName = element2.getText();
-		   if("SubstanceName".equals(element2.getName())&&!subsNameAsPerAgile.equals(sOldSubsName)) 
+			String sElementName = element2.getName();
+			System.out.println("size test of element and name of element--"+templist.size()+"  "+sElementName);
+
+		   if("SubstanceName".equals(sElementName)&&!subsNameAsPerAgile.equals(sOldSubsName)) 
 		   {
 			   element2.setText(subsNameAsPerAgile);
 			   log.info("~INFO::~Substance_ReNaming_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldSubsName+"~"+subsNameAsPerAgile);
+			   sOldSubsNameGlobal = sOldSubsName;
 		   }
-		}		
+		   if("Exemptions".equals(sElementName)) 
+		   {
+			   List <Element> templist2 = element2.getChildren();
+			   Element valueTag = (Element)templist2.toArray()[0];
+			   String valueTagText = valueTag.getText();
+			   //if(valueTagText.equals("Test"))
+			   if(true)
+			   {
+				   substancenode.removeContent(element2);
+				   log.info("~INFO::~Substance_ExemptionsTagDetachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldSubsName+"~"+subsNameAsPerAgile);
+				   removeDeclaredComplianceElment = true;
+				   i--;
+			   }
+		   }		   
+		   if("DeclaredCompliance".equals(sElementName)) 
+		   {
+			   DeclaredCompliance = element2;
+		   }
+		}	
+		if(removeDeclaredComplianceElment && DeclaredCompliance!=null) 
+		{
+			substancenode.removeContent(DeclaredCompliance);
+			log.info("~INFO::~Substance_DeclaredComplianceTagDetachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldSubsNameGlobal+"~"+subsNameAsPerAgile);
+		}
 	}
 	private String getChildTextByParentNodeAndChildElementName(Element substancenode, String childElementName) 
 	{
@@ -237,21 +298,21 @@ class InitiateXMLReadWrite
 				  {				    						    
 					  parentElement.removeContent(substancenode);
 					  log.info("~INFO::~Level2_Sustance_Detachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+casNumberKey);
-					  modifySubstance_Name_Level(substancenode,sSubNameAsPerAgile,"3"); //new code 1
+					  modifySubstance_Name_Level_Exemptions(substancenode,sSubNameAsPerAgile,"3"); //new code 1
 					  substancegrpnode.addContent(substancenode);
 					  log.info("~INFO::~Level2_Substance_MovementTo_Existing_SubsGrp_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+casNumberKey+"~"+sSubGrpNameAsPerAgile);
 				  }else 
 				  {					  
 					  if(sSubGrpNameAsPerAgile.isEmpty()) // true indicate that substance at level2 in source xml doesnt belong to any substance grp
 					  {
-						  modifySubstanceName(substancenode,sSubNameAsPerAgile); //new code 2
+						  modifySubstance_Name_Exemption(substancenode,sSubNameAsPerAgile); //new code 2
 						  
 					  }else 
 					  {
 						  //create new substance grp node and attach substance child with cas number -- start
 						  parentElement.removeContent(substancenode);
 						  log.info("~INFO::~Level2_Sustance_Detachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+casNumberKey);
-						  modifySubstance_Name_Level(substancenode,sSubNameAsPerAgile,"3");
+						  modifySubstance_Name_Level_Exemptions(substancenode,sSubNameAsPerAgile,"3");
 						  //createNewSubGrpAttachChild(sSubGrpNameAsPerAgile,substancenode,parentElement);						  
 						  populateSubsGrpToBeCreatedMap(hmSubsGrpToBeCreated,substancenode,sSubGrpNameAsPerAgile);
 						  //create new substance grp node and attach substance child with cas number -- end
@@ -284,7 +345,7 @@ class InitiateXMLReadWrite
 						    List<Element> tempElementList1 = new ArrayList<Element>();
 						    tempElementList1.add(childSubstance);
 	            			List <Element> subGrpAllCasNumbElementList =  getFirstLevelChildByElementName("CasNumber",tempElementList1 );
-	            			System.out.println("------------------------subGrpAllCasNumbElementList size test--------------"+subGrpAllCasNumbElementList.size());
+	            			//System.out.println("------------------------subGrpAllCasNumbElementList size test--------------"+subGrpAllCasNumbElementList.size());
 	            			for(Element casNumber : subGrpAllCasNumbElementList) //one substance node will contain only one cas element. loop will iterate for only once
 	            			{
 	            				String sCasNumber = casNumber.getText();
@@ -303,17 +364,17 @@ class InitiateXMLReadWrite
 	            	                  {
 	            	                	  subsGrpElement.removeContent(rootSubstance_Level3);
 	            	                	  log.info("~INFO::~Level3_Sustance_Detachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sCasNumber+"~"+sSubGrpName);
-	            						  modifySubstance_Name_Level(rootSubstance_Level3,sSubNameAsPerAgile1,"2"); //new code 1
+	            						  modifySubstance_Name_Level_Exemptions(rootSubstance_Level3,sSubNameAsPerAgile1,"2"); //new code 1
 	            						  materialElement.addContent(rootSubstance_Level3);
 	            						  log.info("~INFO::~Level3_Substance_MovementTo_MaterialNode_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sCasNumber);
 	            	                  } else if(sSubGrpName.equals(sSubGrpNameAsPerAgile1)) 
 	            	                  {
-	            						  modifySubstanceName(rootSubstance_Level3,sSubNameAsPerAgile1); //new code 2
+	            						  modifySubstance_Name_Exemption(rootSubstance_Level3,sSubNameAsPerAgile1); //new code 2
 	            	                  } else 
 	            	                  {
 	            	                	  subsGrpElement.removeContent(rootSubstance_Level3);
 	            						  log.info("~INFO::~Level3_Sustance_Detachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sCasNumber+"~"+sSubGrpName);	            						  
-	            	                	  modifySubstance_Name_Level(rootSubstance_Level3,sSubNameAsPerAgile1,"3");
+	            	                	  modifySubstance_Name_Level_Exemptions(rootSubstance_Level3,sSubNameAsPerAgile1,"3");
 	            	                	  populateSubsGrpToBeCreatedMap(hmSubsGrpToBeCreated,rootSubstance_Level3,sSubGrpNameAsPerAgile1);
 	            	                  }
 	            				  }
@@ -338,6 +399,8 @@ class InitiateXMLReadWrite
   						    log.info("~INFO::~Empty_SubstanceGroup_Deletetion_CompletedFor~"+sGlobalFileName+"~"+sGlobalMaterialName+"~"+sSubGrpName);
 
 	            		}
+	            		
+	            		 modifySubstance_Name_Exemption(subGrpElement,sSubGrpName);
 				  }
 				  
       			if(!bSuccess) 
@@ -584,7 +647,7 @@ class InitiateXMLReadWrite
 		String sourceXMLNameBasedOnFeedFileRowNum = "";
 		int iMaterialDeclarationLimit = 0;
 		AgileSDKManager testobj1 = new AgileSDKManager();	
-		IAgileSession agileSession = testobj1.getAgileSession(obj1.sUsername, obj1.sPassword, obj1.sUrl);
+		//IAgileSession agileSession = testobj1.getAgileSession(obj1.sUsername, obj1.sPassword, obj1.sUrl);
 		SaveAsHMD testobj2 = new SaveAsHMD();
 		
 		while ((nextLine = feedFileReader.readNext()) != null) 
@@ -620,8 +683,8 @@ class InitiateXMLReadWrite
 						}else if(bSuccess && skeletonDocument==null)
 						{
 							 // String sMaterialDeclName = testobj2.getMDName_saveAsHMD(agileSession);
-							 //String sMaterialDeclName = "hardcodedMD";
-							 sMaterialDeclName = testobj2.getMDName_saveAsHMD(agileSession);
+							 sMaterialDeclName = "hardcodedMD";
+							 //sMaterialDeclName = testobj2.getMDName_saveAsHMD(agileSession);
 							 if(sMaterialDeclName=="") 
 							 {
 									log.info("~ERROR::~Document Reading skipped due to Exception in method getMDName_saveAsHMD while parsing xml~"+sourceXMLNameBasedOnFeedFileRowNum);

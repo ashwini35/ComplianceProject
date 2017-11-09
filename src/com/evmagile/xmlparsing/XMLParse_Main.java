@@ -136,7 +136,7 @@ public class XMLParse_Main {
 		  }	
 		  finally
 		  {
-				agileSession.close(); 
+				//agileSession.close(); 
 				log.info("Disconnected from Agile session");
 				//sendMail();
 		  }

@@ -81,28 +81,28 @@ public class SaveAsHMD {
                                    
                                     //Get Declaration object
                                                 IDeclaration MD = (IDeclaration) agileSession.getObject(IDeclaration.OBJECT_TYPE, MD_Number);
-                        System.out.println("Old Declaration=" + MD.getName());
+                        //System.out.println("Old Declaration=" + MD.getName());
                        
                         
                         //Get Supplier (related to Manufacturer) object
                         ISupplier sup = (ISupplier) agileSession.getObject(ISupplier.OBJECT_TYPE, Sup_Number);
                         MDparams.put(DeclarationConstants.ATT_COVER_PAGE_SUPPLIER, sup);
-                        System.out.println("Supplier =" + sup.getName());
+                        //System.out.println("Supplier =" + sup.getName());
                        
                         
                         //Get Process Analyst object
                         IUser procMgr = (IUser) agileSession.getObject(IUser.OBJECT_TYPE, Proc_Analyst);
                         MDparams.put(DeclarationConstants.ATT_COVER_PAGE_COMPLIANCE_MANAGER, procMgr);
-                        System.out.println("Process Analyst =" + procMgr.getName());
+                        //System.out.println("Process Analyst =" + procMgr.getName());
                        
                         
                         //Get Form Type object
                         IAgileList frmType = (IAgileList) MD.getCell(DeclarationConstants.ATT_PAGE_TWO_FORM_TYPE).getAvailableValues();
                         frmType.setSelection(new Object[] {Form_Type});
                         MDparams.put(DeclarationConstants.ATT_PAGE_TWO_FORM_TYPE, frmType);
-                        System.out.println("Form Type=" + frmType.getSelection());
+                       // System.out.println("Form Type=" + frmType.getSelection());
  
-                        System.out.println(">>>> MAP =" + MDparams);
+                      //  System.out.println(">>>> MAP =" + MDparams);
  
                         //Save As with details
                         IDeclaration NewMD=(IDeclaration) MD.saveAs(DeclarationConstants.CLASS_HOMOGENEOUS_MATERIAL_DECLARATION, MDparams);

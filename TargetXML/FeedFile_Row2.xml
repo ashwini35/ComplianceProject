@@ -3,7 +3,7 @@
   <HomogeniousMaterialDeclaration>
     <Specification>Specification1</Specification>
     <CoverPage>
-      <Name>REVA_EC_2017-11-03 18-04-50_003</Name>
+      <Name>hardcodedMD</Name>
       <DeclarationType>Homogeneous Material Declaration</DeclarationType>
     </CoverPage>
     <PageTwo>Page2 text</PageTwo>
@@ -34,6 +34,30 @@
           <SubstanceType>Materials</SubstanceType>
           <ChildLevel>1</ChildLevel>
           <ResultMass UOM="Gram">0.292</ResultMass>
+          <SubstanceNode>
+            <SubstanceName>NICKEL AND NICKEL COMPOUNDS</SubstanceName>
+            <CalculatedPpm>59640</CalculatedPpm>
+            <ThresholdMassPpm>100</ThresholdMassPpm>
+            <CalculatedCompliance>Non-Compliant</CalculatedCompliance>
+            <Reporting>Mandatory</Reporting>
+            <SubstanceType>Substance Groups</SubstanceType>
+            <LifecyclePhase>Active</LifecyclePhase>
+            <SpecIntentionallyAdded>No</SpecIntentionallyAdded>
+            <CalculatedMass UOM="Gram">0.02982</CalculatedMass>
+            <ChildLevel>2</ChildLevel>
+            <ResultMass UOM="Gram">0.02982</ResultMass>
+            <ResultPpm>59640</ResultPpm>
+            <SubstanceNode>
+              <SubstanceName>Ni</SubstanceName>
+              <CasNumber>7440-02-0</CasNumber>
+              <DeclaredPpm>59640</DeclaredPpm>
+              <ConversionFactor>1</ConversionFactor>
+              <SubstanceType>substances</SubstanceType>
+              <LifecyclePhase>Active</LifecyclePhase>
+              <ChildLevel>3</ChildLevel>
+              <UserEnteredCasNumber>7440-02-0</UserEnteredCasNumber>
+            </SubstanceNode>
+          </SubstanceNode>
           <SubstanceNode>
             <SubstanceName>ANTIMONY AND ANTIMONY COMPOUNDS</SubstanceName>
             <CalculatedPpm>300</CalculatedPpm>

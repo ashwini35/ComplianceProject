@@ -34,38 +34,38 @@
 				  <SubstanceType>Materials</SubstanceType>
 				  <ChildLevel>1</ChildLevel>
 				  <ResultMass UOM="Gram">0.292</ResultMass>
-				<SubstanceNode>
-					<SubstanceName>NICKEL AND NICKEL COMPOUNDS</SubstanceName>
-					<CalculatedPpm>59640</CalculatedPpm>
-					<ThresholdMassPpm>100</ThresholdMassPpm>
-					<CalculatedCompliance>Non-Compliant</CalculatedCompliance>
-					<DeclaredCompliance>Exempt</DeclaredCompliance>
-					<Exemptions>
-					<Value>-102: Part contains nickel but will not have prolonged contact with skin (i.e. surface mount parts) per 76/769/EEC and 94/27/EC</Value>
-					</Exemptions>
-					<Reporting>Mandatory</Reporting>
-					<SubstanceType>Substance Groups</SubstanceType>
-					<LifecyclePhase>Active</LifecyclePhase>
-					<SpecIntentionallyAdded>No</SpecIntentionallyAdded>
-					<CalculatedMass UOM="Gram">0.02982</CalculatedMass>
-					<ChildLevel>2</ChildLevel>
-					<ResultMass UOM="Gram">0.02982</ResultMass>
-					<ResultPpm>59640</ResultPpm>
-					<SubstanceNode>
-						<SubstanceName>Ni</SubstanceName>
-						<CasNumber>7440-02-0</CasNumber>
-						<DeclaredPpm>59640</DeclaredPpm>
-						<DeclaredCompliance>Exempt</DeclaredCompliance>
-						<Exemptions>
-						<Value>-102: Part contains nickel but will not have prolonged contact with skin (i.e. surface mount parts) per 76/769/EEC and 94/27/EC</Value>
-						</Exemptions>
-						<ConversionFactor>1</ConversionFactor>
-						<SubstanceType>substances</SubstanceType>
-						<LifecyclePhase>Active</LifecyclePhase>
-						<ChildLevel>3</ChildLevel>
-						<UserEnteredCasNumber>7440-02-0</UserEnteredCasNumber>
-					</SubstanceNode>
-				</SubstanceNode>
+				  	  <SubstanceNode>
+	<SubstanceName>NICKEL AND NICKEL COMPOUNDS</SubstanceName>
+	<CalculatedPpm>59640</CalculatedPpm>
+	<ThresholdMassPpm>100</ThresholdMassPpm>
+	<CalculatedCompliance>Non-Compliant</CalculatedCompliance>
+	<DeclaredCompliance>Exempt</DeclaredCompliance>
+	<Exemptions>
+	<Value>-102: Part contains nickel but will not have prolonged contact with skin (i.e. surface mount parts) per 76/769/EEC and 94/27/EC</Value>
+	</Exemptions>
+	<Reporting>Mandatory</Reporting>
+	<SubstanceType>Substance Groups</SubstanceType>
+	<LifecyclePhase>Active</LifecyclePhase>
+	<SpecIntentionallyAdded>No</SpecIntentionallyAdded>
+	<CalculatedMass UOM="Gram">0.02982</CalculatedMass>
+	<ChildLevel>2</ChildLevel>
+	<ResultMass UOM="Gram">0.02982</ResultMass>
+	<ResultPpm>59640</ResultPpm>
+	<SubstanceNode>
+		<SubstanceName>Ni</SubstanceName>
+		<CasNumber>7440-02-0</CasNumber>
+		<DeclaredPpm>59640</DeclaredPpm>
+		<DeclaredCompliance>Exempt</DeclaredCompliance>
+		<Exemptions>
+		<Value>-102: Part contains nickel but will not have prolonged contact with skin (i.e. surface mount parts) per 76/769/EEC and 94/27/EC</Value>
+		</Exemptions>
+		<ConversionFactor>1</ConversionFactor>
+		<SubstanceType>substances</SubstanceType>
+		<LifecyclePhase>Active</LifecyclePhase>
+		<ChildLevel>3</ChildLevel>
+		<UserEnteredCasNumber>7440-02-0</UserEnteredCasNumber>
+	</SubstanceNode>
+</SubstanceNode>
 				  <SubstanceNode>
 					<SubstanceName>Level2SubNewUniqueGrpCreationTest1</SubstanceName>
 					<CasNumber>Level2SubNewUniqueGrpCreationTest1</CasNumber>
