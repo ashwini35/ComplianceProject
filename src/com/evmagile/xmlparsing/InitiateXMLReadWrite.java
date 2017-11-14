@@ -133,17 +133,17 @@ class InitiateXMLReadWrite
 		 {		   
 		    Element element2 = (Element)templist.get(i);		     
 			String sElementName = element2.getName();
-			String sOldSubsName = element2.getText();
-		   if("SubstanceName".equals(sElementName)&&!subsNameAsPerAgile.equals(sOldSubsName)) 
+			String sOldValue = element2.getText();
+		   if("SubstanceName".equals(sElementName)&&!subsNameAsPerAgile.equals(sOldValue)) 
 		   {
 			   element2.setText(subsNameAsPerAgile);
-			   log.info("~INFO::~Substance_ReNaming_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldSubsName+"~"+subsNameAsPerAgile);
-			   sOldSubsNameGlobal = sOldSubsName;
+			   log.info("~INFO::~Substance_ReNaming_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldValue+"~"+subsNameAsPerAgile);
+			   sOldSubsNameGlobal = sOldValue;
 		   }
 		   if("ChildLevel".equals(sElementName)) 
 		   {
 			   element2.setText(sLevel);
-			   log.info("~INFO::~Substance_LevelCorrection_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldSubsName+"~"+subsNameAsPerAgile+"~"+sLevel);
+			   log.info("~INFO::~Substance_LevelCorrection_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+"~"+subsNameAsPerAgile+"~"+sOldValue+"~"+sLevel);
 		   }
 		   if("Exemptions".equals(sElementName)) 
 		   {
@@ -154,7 +154,7 @@ class InitiateXMLReadWrite
 			   if(true)
 			   {
 				   substancenode.removeContent(element2);
-				   log.info("~INFO::~Substance_ExemptionsTagDetachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldSubsName+"~"+subsNameAsPerAgile+"~"+sLevel);
+				   log.info("~INFO::~Substance_ExemptionsTagDetachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+subsNameAsPerAgile);
 				   removeDeclaredComplianceElment = true;
 				   i--;
 			   }
@@ -167,7 +167,7 @@ class InitiateXMLReadWrite
 		if(removeDeclaredComplianceElment && DeclaredCompliance!=null) 
 		{
 			substancenode.removeContent(DeclaredCompliance);
-			log.info("~INFO::~Substance_DeclaredComplianceTagDetachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldSubsNameGlobal+"~"+subsNameAsPerAgile+"~"+sLevel);
+			log.info("~INFO::~Substance_DeclaredComplianceTagDetachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldSubsNameGlobal+"~"+subsNameAsPerAgile);
 		}
 	}
 	
@@ -182,15 +182,15 @@ class InitiateXMLReadWrite
 		for(int i=0;i<templist.size();i++)
 		 {		   
 		    Element element2 = (Element)templist.get(i);
-			String sOldSubsName = element2.getText();
+			String sOldValue = element2.getText();
 			String sElementName = element2.getName();
-			System.out.println("size test of element and name of element--"+templist.size()+"  "+sElementName);
+			//System.out.println("size test of element and name of element--"+templist.size()+"  "+sElementName);
 
-		   if("SubstanceName".equals(sElementName)&&!subsNameAsPerAgile.equals(sOldSubsName)) 
+		   if("SubstanceName".equals(sElementName)&&!subsNameAsPerAgile.equals(sOldValue)) 
 		   {
 			   element2.setText(subsNameAsPerAgile);
-			   log.info("~INFO::~Substance_ReNaming_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldSubsName+"~"+subsNameAsPerAgile);
-			   sOldSubsNameGlobal = sOldSubsName;
+			   log.info("~INFO::~Substance_ReNaming_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldValue+"~"+subsNameAsPerAgile);
+			   sOldSubsNameGlobal = sOldValue;
 		   }
 		   if("Exemptions".equals(sElementName)) 
 		   {
@@ -201,7 +201,8 @@ class InitiateXMLReadWrite
 			   if(true)
 			   {
 				   substancenode.removeContent(element2);
-				   log.info("~INFO::~Substance_ExemptionsTagDetachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldSubsName+"~"+subsNameAsPerAgile);
+				   //log.info("~INFO::~Substance_ExemptionsTagDetachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldValue+"~"+subsNameAsPerAgile);
+				   log.info("~INFO::~Substance_ExemptionsTagDetachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sOldSubsNameGlobal+"~"+subsNameAsPerAgile);
 				   removeDeclaredComplianceElment = true;
 				   i--;
 			   }
@@ -253,7 +254,9 @@ class InitiateXMLReadWrite
 		SubstanceNode.addContent(ChildLevel);
 		SubstanceNode.addContent(childSubNode);
 		parentElement.addContent(SubstanceNode);
-		log.info("~INFO::~NewSubstanceGroup_HavingChildNode_CompletedFor~"+sGlobalFileName+"~"+sGlobalMaterialName+"~"+subGrpNameAsPerAgile+"~"+sChildNames.toString());
+		//log.info("~INFO::~NewSubstanceGroup_HavingChildNode_CompletedFor~"+sGlobalFileName+"~"+sGlobalMaterialName+"~"+subGrpNameAsPerAgile+"~"+sChildNames.toString());
+		log.info("~INFO::~NewSubstanceGroup_HavingChildNode_CompletedFor~"+sGlobalFileName+"~"+sGlobalMaterialName+"~"+sChildNames.toString()+"~"+"~"+"~"+"~"+subGrpNameAsPerAgile);
+
 	}
 	
 	private void populateSubsGrpToBeCreatedMap(HashMap<String,List<Element>> hmSubsGrpToBeCreated, Element substanceElment, String sSubGrpNameAsPerAgile1 ) 
@@ -274,7 +277,7 @@ class InitiateXMLReadWrite
 	
     private boolean modifyMaterialDOMBasedOn_SourceXMLMap_InputCSVMap(HashMap<String, Element> hmCasNum_SubstancePair,HashMap<String, Element> hmSubGrpName_SubGrpElementPair) throws Exception
     {
-    	boolean bSuccess = true;
+    	//boolean bSuccess = true;
 		if(!hmCasNum_SubstancePair.isEmpty()) 
 		{
 			HashMap<String,List<Element>> hmSubsGrpToBeCreated = new HashMap<String,List<Element>>();
@@ -323,11 +326,12 @@ class InitiateXMLReadWrite
 			  {
 				  //return code to abolish execution for entire source xmls- start
 				  log.info("~ERROR::~XML/DOM Transformation skipped due to CASNumber NOTFound In Agile for~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+casNumberKey);				  
-				  bSuccess = false;
-				  break;
+				  //bSuccess = false;
+				  return false;
 				  //return code to abolish execution for entire source xmls- end
 			  }			  
 			}
+			
 			//loop through hmSubGrpName_SubGrpElementPair to modify/delete substance group child substance node as per Agile--start 
 			Iterator iter1 = sSubGrpNameKeys.iterator();
 			Element materialElement = null;
@@ -363,7 +367,8 @@ class InitiateXMLReadWrite
 	            	                  if("".equals(sSubGrpNameAsPerAgile1))//if group name is empty 
 	            	                  {
 	            	                	  subsGrpElement.removeContent(rootSubstance_Level3);
-	            	                	  log.info("~INFO::~Level3_Sustance_Detachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sCasNumber+"~"+sSubGrpName);
+	            	                	  //log.info("~INFO::~Level3_Sustance_Detachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sCasNumber+"~"+sSubGrpName);
+	            	                	  log.info("~INFO::~Level3_Sustance_Detachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sCasNumber+"~"+"~"+"~"+"~"+sSubGrpName);
 	            						  modifySubstance_Name_Level_Exemptions(rootSubstance_Level3,sSubNameAsPerAgile1,"2"); //new code 1
 	            						  materialElement.addContent(rootSubstance_Level3);
 	            						  log.info("~INFO::~Level3_Substance_MovementTo_MaterialNode_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sCasNumber);
@@ -373,7 +378,7 @@ class InitiateXMLReadWrite
 	            	                  } else 
 	            	                  {
 	            	                	  subsGrpElement.removeContent(rootSubstance_Level3);
-	            						  log.info("~INFO::~Level3_Sustance_Detachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sCasNumber+"~"+sSubGrpName);	            						  
+	            						  log.info("~INFO::~Level3_Sustance_Detachment_CompletedFor~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sCasNumber+"~"+"~"+"~"+"~"+sSubGrpName);	            						  
 	            	                	  modifySubstance_Name_Level_Exemptions(rootSubstance_Level3,sSubNameAsPerAgile1,"3");
 	            	                	  populateSubsGrpToBeCreatedMap(hmSubsGrpToBeCreated,rootSubstance_Level3,sSubGrpNameAsPerAgile1);
 	            	                  }
@@ -382,31 +387,32 @@ class InitiateXMLReadWrite
 	            				  {
 	            					  //return code to abolish execution for entire source xmls- start
 	            					  log.info("~ERROR::~XML/DOM Transformation skipped due to CASNumber NOTFound In Agile for~"+ sGlobalFileName+"~"+sGlobalMaterialName+"~"+sCasNumber);	            					  
-	            					  bSuccess = false;
-	            					  break;
+	            					  //bSuccess = false;
+	            					  //break;
+	            					  return false;	            					 
 	            					  //return code to abolish execution for entire source xmls- end
 	            				  }
 	            			}	            			
-	            			if(!bSuccess) 
+/*	            			if(!bSuccess) 
 	            			{
 	            				break;
-	            			}
+	            			}*/
 						}
 	            		tempChildSublist = getFirstLevelChildByElementName("SubstanceNode",tempElementList);
 	            		if(tempChildSublist.isEmpty()) 
 	            		{
 	            			materialElement.removeContent(subGrpElement);
-  						    log.info("~INFO::~Empty_SubstanceGroup_Deletetion_CompletedFor~"+sGlobalFileName+"~"+sGlobalMaterialName+"~"+sSubGrpName);
+  						    log.info("~INFO::~Empty_SubstanceGroup_Deletetion_CompletedFor~"+sGlobalFileName+"~"+sGlobalMaterialName+"~"+"~"+"~"+"~"+"~"+sSubGrpName);
 
 	            		}
 	            		
 	            		 modifySubstance_Name_Exemption(subGrpElement,sSubGrpName);
 				  }
 				  
-      			if(!bSuccess) 
+/*      			if(!bSuccess) 
       			{
       				break;
-      			}
+      			}*/
 			}
 			Set<String> grpsNameToBeCreated = hmSubsGrpToBeCreated.keySet();
 			Iterator <String> iter3 = grpsNameToBeCreated.iterator();
@@ -420,7 +426,7 @@ class InitiateXMLReadWrite
 			//loop through hmSubGrpName_SubGrpElementPair to modify/delete substance group child substance node as per Agile-end
 		}
 		//log.info("reading substances node for a material end ------------------------");
-		return bSuccess;
+		return true;
     }
     
 	private boolean modifyLevel2_substancesNodesForMaterial (List<Element> listSubstance_SubGrpLevel_2) throws Exception
@@ -436,7 +442,7 @@ class InitiateXMLReadWrite
 		List <Element> listSubstance_SubGrpLevel_2  = new ArrayList<Element>();
 		listSubstance_SubGrpLevel_2 = getFirstLevelChildByElementName("SubstanceNode",tempMaterial);			
 		
-		if(listSubstance_SubGrpLevel_2!=null) 
+		if(listSubstance_SubGrpLevel_2!=null && !listSubstance_SubGrpLevel_2.isEmpty()) 
 		{
 			//log.info("reading substances node for a material starts ------------------------");
 			return modifyLevel2_substancesNodesForMaterial(listSubstance_SubGrpLevel_2);	
@@ -484,23 +490,42 @@ class InitiateXMLReadWrite
 								
 		if(rootNode!=null) 
 		{
-			HomogeneousMaterialDeclarations = getFirstLevelChildByElementName("HomogeneousMaterialDeclarations",rootNodeTemp);
+			//HomogeneousMaterialDeclarations = getFirstLevelChildByElementName("HomogeneousMaterialDeclarations",rootNodeTemp);
+			HomogeneousMaterialDeclarations = getFirstLevelChildByElementName("ManufacturerParts",rootNodeTemp);
 		}
-		if(HomogeneousMaterialDeclarations!=null) 
+		if(HomogeneousMaterialDeclarations!=null && !HomogeneousMaterialDeclarations.isEmpty()) 
 		{
-			ManufacturerPartComposition = getFirstLevelChildByElementName("ManufacturerPartComposition",HomogeneousMaterialDeclarations);
+			//ManufacturerPartComposition = getFirstLevelChildByElementName("ManufacturerPartComposition",HomogeneousMaterialDeclarations);
+			ManufacturerPartComposition = getFirstLevelChildByElementName("Compositions",HomogeneousMaterialDeclarations);
+			ManufacturerPartComposition = filterForLatestComposition(ManufacturerPartComposition);
+			
 		}
-		if(ManufacturerPartComposition!=null) 
+		if(ManufacturerPartComposition!=null && !ManufacturerPartComposition.isEmpty()) 
 		{
 			Subparts_ChildLevel_0 = getFirstLevelChildByElementName("SubstanceNode",ManufacturerPartComposition);
 		}
-		if(Subparts_ChildLevel_0!=null) 
+		if(Subparts_ChildLevel_0!=null && !Subparts_ChildLevel_0.isEmpty()) 
 		{
 			listMaterial_ChildLevel_1 = getFirstLevelChildByElementName("SubstanceNode",Subparts_ChildLevel_0);
 		}		 
 		return listMaterial_ChildLevel_1;
 	}
 	
+	private List <Element> filterForLatestComposition(List<Element> manufacturerPartComposition) {
+		List <Element> compositionElement = new ArrayList<Element>();
+		for(int i=0;i<=manufacturerPartComposition.size()-1;i++)
+		{  
+			Element element = manufacturerPartComposition.get(i);  
+			String sSpecificationValue= getChildTextByParentNodeAndChildElementName(element,"Specification");
+			if(sSpecificationValue.contains("#")) 
+			{
+				compositionElement.add(element);
+				break;
+			}
+		} 
+		return compositionElement;		
+	}
+
 	private void createTargetXMLByDocumentInfo(Document document, String sAbsTargetXMLPath) throws Exception
 	{
 		xmlOutput = new XMLOutputter();
@@ -514,6 +539,7 @@ class InitiateXMLReadWrite
     	List <Element> listMaterial_ChildLevel_1  = null;		    	
     	List <Element> listSourceXMLAllSubstance_Level2  = null;
     	List<String>lsSourceXMLCasNumber = new ArrayList();
+    	StringBuffer strBuffTemp = new StringBuffer();
 		for(int x=0;x<arrFilesPath.length;x++) 
 		{
 			sXMLAbsFileName = arrFilesPath[x].getAbsolutePath() ;
@@ -525,39 +551,71 @@ class InitiateXMLReadWrite
 				listMaterial_ChildLevel_1 = getMaterialList_Level_1_ByDocument(document);
 			}
 			
-			if(listMaterial_ChildLevel_1!=null) 
+			if(listMaterial_ChildLevel_1!=null && !listMaterial_ChildLevel_1.isEmpty()) 
 			{
 				listSourceXMLAllSubstance_Level2 = getFirstLevelChildByElementName("SubstanceNode",listMaterial_ChildLevel_1);
 			}
 			
-			if(listSourceXMLAllSubstance_Level2!=null) 
+			if(listSourceXMLAllSubstance_Level2!=null && !listSourceXMLAllSubstance_Level2.isEmpty()) 
 			{
 
-				for(int i=0;i<=listSourceXMLAllSubstance_Level2.size()-1;i++)
-				{  
-	                    Element element_Substance_childLevel_2 = (Element)listSourceXMLAllSubstance_Level2.get(i);	                    
-	            		List<Element> templist = element_Substance_childLevel_2.getChildren();
-	            		HashMap temphm = new HashMap ();
-	            		for (Element element2 : templist) 
-	            		{
-	     			               			  
-	            		   temphm.put(element2.getName(), element2.getText());            			   
-						}            		
-	            		if(temphm.get("SubstanceType").equals("substances")) 
-	            		{
-	            			String tempcasnumber = (String)temphm.get("CasNumber");
-	            			System.out.println("tempcasnumber-------------------"+tempcasnumber);
-	            			if(!lsSourceXMLCasNumber.contains(tempcasnumber)) 
-	            			{
-	            			
-		            			lsSourceXMLCasNumber.add(tempcasnumber);
-	            			}
-	            		}            		
-				 }
+                    fetchCasNumberDetailForElement(listSourceXMLAllSubstance_Level2,lsSourceXMLCasNumber,strBuffTemp);
 			 }			
 		 }
+		//java.io.PrintWriter out = new java.io.PrintWriter("lsSourceXMLCasNumber.txt");
+		System.out.println(strBuffTemp.toString());
+		
 		return lsSourceXMLCasNumber.toArray(new String[0]);
 	}
+	private void fetchCasNumberDetailForElement(List <Element> listSourceXMLAllSubstance_SubGrp,List<String>lsSourceXMLCasNumber,StringBuffer strBuffTemp) {
+		
+		
+		for(int i=0;i<=listSourceXMLAllSubstance_SubGrp.size()-1;i++)
+		{  
+                Element element_Substance_childLevel_2 = (Element)listSourceXMLAllSubstance_SubGrp.get(i);	                    
+        		List<Element> templist = element_Substance_childLevel_2.getChildren();
+        		HashMap temphm = new HashMap ();
+        		for (Element element2 : templist) 
+        		{
+ 			               			  
+        		   temphm.put(element2.getName(), element2.getText());            			   
+				}            		
+        		if(temphm.get("SubstanceType").equals("substances")) 
+        		{
+        			String tempcasnumber = (String)temphm.get("CasNumber");
+        			String SubstanceName = (String)temphm.get("SubstanceName");
+        			//System.out.println("tempcasnumber-------------------"+tempcasnumber);
+        		
+        			if(!lsSourceXMLCasNumber.contains(SubstanceName+","+tempcasnumber)) 
+        			{
+        			
+            			lsSourceXMLCasNumber.add(SubstanceName+","+tempcasnumber);
+            			strBuffTemp.append("\"");
+            			strBuffTemp.append("\"");
+            			strBuffTemp.append(",");
+            			strBuffTemp.append("\"");
+            			strBuffTemp.append(SubstanceName);
+            			strBuffTemp.append("\"");
+            			strBuffTemp.append(",");
+               			strBuffTemp.append("\"");
+            			strBuffTemp.append(tempcasnumber);
+            			strBuffTemp.append("\"");
+            			strBuffTemp.append("\n");
+            			//System.out.println(SubstanceName+","+tempcasnumber);
+            			//System.out.println("\n");
+        			}
+        		}  else if(temphm.get("SubstanceType").equals("Substance Groups")) 
+        		{
+        			List <Element> temllist = new ArrayList<>();
+        			temllist.add(element_Substance_childLevel_2);
+        			try {
+            			fetchCasNumberDetailForElement(getFirstLevelChildByElementName("SubstanceNode",temllist),lsSourceXMLCasNumber,strBuffTemp);
+        			}catch(Exception ex){}
+        		}          		
+		 }
+		
+	}
+
 	private Document createSkeletonDocument(String sMaterialDecName) 
 	{
 		Element AgileData = new Element("AgileData");		
@@ -587,13 +645,17 @@ class InitiateXMLReadWrite
 		{
 			List <Element> Skeleton_HomoMatDeclElement1 =  skeletonDocument.getRootElement().getChildren();//list size will be always one
 			List <Element> MFT_HomoMatDeclElement =  document.getRootElement().getChildren();//list size will be always one
-			List <Element> MFT_PartInfoElement  = getFirstLevelChildByElementName("ManufacturerParts",MFT_HomoMatDeclElement);//list size will be always one
-			List <Element> MFT_Composition  = getFirstLevelChildByElementName("ManufacturerPartComposition",MFT_HomoMatDeclElement);//list size will be always one
-
+			
+			//List <Element> MFT_PartInfoElement  = getFirstLevelChildByElementName("ManufacturerParts",MFT_HomoMatDeclElement);//list size will be always one
+			List <Element> MFT_PartInfoElement  = getFirstLevelChildByElementName("GeneralInfo",MFT_HomoMatDeclElement);//list size will be always one
+			//List <Element> MFT_Composition  = getFirstLevelChildByElementName("ManufacturerPartComposition",MFT_HomoMatDeclElement);//list size will be always one
+			List <Element> MFT_Composition  = filterForLatestComposition(getFirstLevelChildByElementName("Compositions",MFT_HomoMatDeclElement));
+			
+			
 			Element Skeleton_HomoMatDeclElement2 = (Element)Skeleton_HomoMatDeclElement1.get(0);
 			//Namespace ParentNameSpace = Skeleton_HomoMatDeclElement2.getNamespace();
-			Skeleton_HomoMatDeclElement2.addContent((Element)MFT_PartInfoElement.get(0).detach());
-			Skeleton_HomoMatDeclElement2.addContent((Element)MFT_Composition.get(0).detach());
+			Skeleton_HomoMatDeclElement2.addContent((Element)MFT_PartInfoElement.get(0).detach().setName("ManufacturerParts"));
+			Skeleton_HomoMatDeclElement2.addContent((Element)MFT_Composition.get(0).detach().setName("ManufacturerPartComposition"));
 			return true;
 		}catch(Exception ex) 
 		{
@@ -609,8 +671,8 @@ class InitiateXMLReadWrite
 		log.info("------------transforXMLs method start..................");				
 		Document document = null;
 
-/*		arrFilesPath = getXMLFilesByDirName(obj1.sSourceXMLDirPath);
-		
+		//getSubstanceInfoMapfromAgile(getXMLFilesByDirName(obj1.sSourceXMLDirPath));
+		/*
 		if(arrFilesPath==null) 
 		{
 			throw new IOException("Source XML file reading error.Please check source directory path");
@@ -634,6 +696,7 @@ class InitiateXMLReadWrite
 			//csvInput = getSubstanceInfoMapfromAgile(arrFilesPath); //Method 2 code
 			throw new Exception("ERROR while reading input csv file 3---------------------------------------");
 		}*/
+		
     	List <Element> listMaterial_ChildLevel_1  = null;		    	
     	
     	long completedIn;
@@ -647,9 +710,9 @@ class InitiateXMLReadWrite
 		String sourceXMLNameBasedOnFeedFileRowNum = "";
 		int iMaterialDeclarationLimit = 0;
 		AgileSDKManager testobj1 = new AgileSDKManager();	
-		//IAgileSession agileSession = testobj1.getAgileSession(obj1.sUsername, obj1.sPassword, obj1.sUrl);
+		IAgileSession agileSession = testobj1.getAgileSession(obj1.sUsername, obj1.sPassword, obj1.sUrl);
 		SaveAsHMD testobj2 = new SaveAsHMD();
-		
+		log.info("~INFO::~SCENARIO_USECASE~"+"CONTEXT_FILE_NAME"+"~"+"CONTEXT_MATERIAL_NAME"+"~"+"CAS_OR_SUB_NAME_Old"+"~"+"SUBSTANCE_NAME_NEW"+"~"+"OLD_LEVEL"+"~"+"NEW_LEVEL"+"~"+"GROUP_NAME");
 		while ((nextLine = feedFileReader.readNext()) != null) 
 		{
 			    //System.out.println("nextLine--"+ nextLine.toString());
@@ -666,7 +729,7 @@ class InitiateXMLReadWrite
 				{					
 					listMaterial_ChildLevel_1 = getMaterialList_Level_1_ByDocument(document);
 					
-					if(listMaterial_ChildLevel_1!=null) 
+					if(listMaterial_ChildLevel_1!=null && !listMaterial_ChildLevel_1.isEmpty()) 
 					{
 						bSuccess = modifyAllMaterialSubNodesForGivenCondition(listMaterial_ChildLevel_1);	
 						String sMaterialDeclName = "";
@@ -682,9 +745,8 @@ class InitiateXMLReadWrite
 								 iMaterialDeclarationLimit++;
 						}else if(bSuccess && skeletonDocument==null)
 						{
-							 // String sMaterialDeclName = testobj2.getMDName_saveAsHMD(agileSession);
-							 sMaterialDeclName = "hardcodedMD";
-							 //sMaterialDeclName = testobj2.getMDName_saveAsHMD(agileSession);
+							 //sMaterialDeclName = "hardcodedMD";
+							 sMaterialDeclName = testobj2.getMDName_saveAsHMD(agileSession);
 							 if(sMaterialDeclName=="") 
 							 {
 									log.info("~ERROR::~Document Reading skipped due to Exception in method getMDName_saveAsHMD while parsing xml~"+sourceXMLNameBasedOnFeedFileRowNum);

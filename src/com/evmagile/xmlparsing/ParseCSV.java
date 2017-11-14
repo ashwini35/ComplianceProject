@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 
 import com.agile.api.APIException;
 import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvException;
 
 public class ParseCSV {
 	
@@ -41,6 +42,7 @@ public class ParseCSV {
 		 log.info("Parsing source csv input/Agile input data starts after referring  : --------------- "+sSourceCSVPath);
 		 boolean bSuccess = true;
 		 String [] arrHeaderNames = null;
+		 HashMap globalHmRow = new HashMap();
 		 int rownumber=0;
 	     String lTotalExecutionTime = "";
 	     HashMap<String,String> hmCasNum_SubstanceInfo = new HashMap <String,String>();
@@ -75,15 +77,17 @@ public class ParseCSV {
 					        	for(int x=0;x<arrHeaderNames.length;x++)
 					        	{					        		
 					        		hmRow.put(arrHeaderNames[x], nextLine[x]);
+					        		globalHmRow = hmRow;
 					        	}					        	
-				        		//inputRowList.add(hmRow);				        							        		
+				        		//inputRowList.add(hmRow);	
+					        	//System.out.println("last hmRow ------ "+hmRow);
 					        	hmCasNum_SubstanceInfo.put((String)hmRow.get("SUBSTANCE_CAS"), (String)hmRow.get("SUBSTANCE_GROUP")+sDelimeter+(String)hmRow.get("SUBSTANCE"));
 					        	
 				        	}catch(Exception ex)
 				        	{		
 				        		bSuccess = false;
-				        		log.info(" ~ ERROR :: ~ ROW "+rownumber+" ~ "+hmRow+" ~ CSV Reading skipped due to error :: ");		
-								log.info("ERROR while reading input csv file2 --------------------------------------- "+ex.getMessage());
+				        		log.info("~ERROR::~ROW "+rownumber+" ~ "+hmRow+" ~ CSV Reading skipped due to error :: ");		
+								log.info("~ERROR::~ while reading input csv file2 --------------------------------------- "+ex.getMessage());
 								ex.printStackTrace();
 				        	}
 
@@ -108,9 +112,16 @@ public class ParseCSV {
 				
 		 }catch(Exception ex)
 		 {
+     		log.info("~ERROR::~After ROW "+rownumber+" ~ "+globalHmRow+" ~ CSV Reading skipped due to error :: ");		
+			log.info("~ERROR::~ while reading input csv file3 --------------------------------------- "+ex.getMessage());
 			 bSuccess = false;
 			 ex.printStackTrace();
 			 return null;
-		 }	  
+		 }
+/*		 finally
+		 {
+			    bSuccess = false;
+	     		log.info("~ERROR::~after ROW "+rownumber+" ~ "+globalHmRow+" ~ CSV Reading skipped due to error from finally :: ");		
+		 } */
 	 }
 }
